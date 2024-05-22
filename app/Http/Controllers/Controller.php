@@ -1,4 +1,4 @@
-<?php
+<?php echo "Halo yos" ?>
 
 namespace App\Http\Controllers;
 
