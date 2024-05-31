@@ -2,15 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/home', function () {
+    return view('home');
 });
 
-Route::get('/test-db', function () {
-    try {
-        DB::connection()->getPdo();
-        return 'Connected to database: ' . DB::connection()->getDatabaseName();
-    } catch (\Exception $e) {
-        return 'Failed to connect to database: ' . $e->getMessage();
-    }
+Route::get('/costumer-service', function () {
+    return view('costumerService');
+});
+
+Route::get('/create-account', function () {
+    return view('createAccount');
+});
+
+Route::get('/syarat-ketentuan', function () {
+    return view('syaratKetentuan');
 });
