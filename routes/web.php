@@ -17,3 +17,7 @@ Route::get('/create-account', function () {
 Route::get('/syarat-ketentuan', function () {
     return view('syaratKetentuan');
 });
+
+route::get('/transfers', function () {
+    return view('transfers');
+});
