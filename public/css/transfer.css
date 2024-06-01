@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.header .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.header ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.header ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.content {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.content h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.content form {
+  margin-bottom: 20px;
+}
+
+.content form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.content form input[type='text'],
+.content form input[type='number'] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.content form input[type='submit'] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.content table,
+.content table th,
+.content table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
