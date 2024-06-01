@@ -19,5 +19,9 @@ Route::get('/syarat-ketentuan', function () {
 });
 
 route::get('/transfers', function () {
-    return view('transfers');
+    return view('transfer');
+});
+
+route::get('/page-transfer', function () {
+    return view('pageTransfer');
 });
