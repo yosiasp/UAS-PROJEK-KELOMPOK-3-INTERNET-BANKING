@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+route::get('/', function () {
+    return view('home');
+});
+
 Route::get('/home', function () {
     return view('home');
 });
