@@ -1,5 +1,5 @@
 <?php
-
+//komen
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
