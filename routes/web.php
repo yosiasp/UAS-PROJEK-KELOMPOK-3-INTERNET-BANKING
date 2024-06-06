@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/', function () {
+    return view('main');
 });
 
 Route::get('/costumer-service', function () {
@@ -18,10 +18,10 @@ Route::get('/syarat-ketentuan', function () {
     return view('syaratKetentuan');
 });
 
-route::get('/transfers', function () {
+Route::get('/transfers', function () {
     return view('transfer');
 });
 
-route::get('/page-transfer', function () {
+Route::get('/page-transfer', function () {
     return view('pageTransfer');
 });
