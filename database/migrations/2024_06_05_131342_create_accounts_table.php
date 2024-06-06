@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
-            $table->date('date_of_birth');
-            $table->integer('phone_number');
+            $table->date('date_of_birth')->nullable();
+            $table->integer('phone_number')->nullable();
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->integer('pin');
