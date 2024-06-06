@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('full_name');
             $table->date('date_of_birth');
             $table->integer('phone_number');
-            $table->string('email');
-            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('username')->unique();
             $table->integer('pin');
             $table->integer('confirm_pin');
             $table->timestamps();
