@@ -10,7 +10,7 @@
     <div class="header">
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
-            <li><a href="{{ url('/home') }}">Home</a></li>
+            <li><a href="{{ url('/') }}">Home</a></li>
             <li><a href="{{ url('/customer-service') }}">Customer Service</a></li>
         </ul>
     </div>
