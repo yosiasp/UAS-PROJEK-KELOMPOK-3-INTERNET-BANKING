@@ -22,10 +22,6 @@
                     <input type="text" id="username" name="username">
                     <p>PIN:</p>
                     <input type="password" id="password" name="password">
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="showPassword" onclick="viewPassword()">
-                        <label for="showPassword">Lihat Password</label>
-                    </div>
                     <button>Masuk</button>
                     <button class ="newAccount" onclick="location.href='{{ url('/create-account') }}'" >Buat akun</button>
                 </div>
@@ -37,15 +33,5 @@
         <div class="footer">
             <p>Copyright &#169 2024 Bank Sejahtera (Persero) tbk</p>
         </div>
-        <script>
-            function viewPassword() {
-                var passwordField = document.getElementById("password");
-                if (passwordField.type === "password") {
-                    passwordField.type = "text";
-                } else {
-                    passwordField.type = "password";
-                }
-            }
-        </script>
     </body>
 </html>
