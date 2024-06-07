@@ -6,8 +6,8 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('/costumer-service', function () {
-    return view('costumerService');
+Route::get('/customer-service', function () {
+    return view('customerService');
 });
 
 Route::get('/create-account', function () {
