@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', [UserController::class, 'index']);
 
 Route::get('/customer-service', function () {
     return view('customerService');
