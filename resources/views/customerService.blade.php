@@ -4,14 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ asset('css/costumerService.css') }}">
-        <title>Costumer Service - Bank Sejahtera</title>
+        <title>Customer Service - Bank Sejahtera</title>
     </head>
     <body>
         <div class="header">
             <p class="logo">INTERNET BANKING SEJAHTERA</p>
             <ul>
                 <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="{{ url('/costumer-service') }}">Costumer Service</a></a></li>
+                <li><a href="{{ url('/customer-service') }}">Customer Service</a></a></li>
             </ul>
         </div>
         <div class="hero">

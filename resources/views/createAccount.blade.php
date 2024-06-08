@@ -11,13 +11,13 @@
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
             <li><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ url('/costumer-service') }}">Costumer Service</a></a></li>
+            <li><a href="{{ url('/customer-service') }}">Customer Service</a></a></li>
         </ul>
     </div>
     <div class="hero">
         <div class="content">
             <h1>Pendaftaran Akun Baru</h1>
-            <form class="create-account-form">
+            <form action="{{ url('/create-account') }}" method="POST" class="create-account-form">
                 <label for="fullname">Nama Lengkap:</label>
                 <input type="text" id="fullname" name="fullname" required>
 
