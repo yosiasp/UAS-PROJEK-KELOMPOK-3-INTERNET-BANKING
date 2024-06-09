@@ -14,6 +14,7 @@
                 <li><a href="{{ url('/customer-service') }}">Customer Service</a></a></li>
             </ul>
         </div>
+        
         <div class="hero">
             <div class="content">
                 <h1>Customer Service</h1>
@@ -36,9 +37,11 @@
                 </div>
             </div>
         </div>
+
         <div class="image">
             <img src = "{{ asset('img/LandingPage.JPG') }}" width="100%" height="100%">
         </div>
+
         <div class="footer">
             <p>Copyright &#169 2024 Bank Sejahtera (Persero) tbk</p>
         </div>
