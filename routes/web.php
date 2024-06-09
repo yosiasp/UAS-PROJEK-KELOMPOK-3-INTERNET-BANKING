@@ -9,7 +9,7 @@ Route::get('/customer-service', function () {
     return view('customerService');
 });
 
-Route::get('/create-account', function () {
+Route::post('/create-account', function () {
     return view('createAccount');
 });
 

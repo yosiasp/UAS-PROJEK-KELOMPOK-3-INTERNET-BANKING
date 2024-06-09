@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
-class UserControllwe extends Controller
+class Controller
 {
     // Fungsi untuk menampilkan form pendaftaran (boleh ubah variabelnya biar sama)
     public function showRegistrationForm()
