@@ -14,6 +14,7 @@
             <li><a href="{{ url('/customer-service') }}">Customer Service</a></a></li>
         </ul>
     </div>
+
     <div class="hero">
         <div class="content">
             <h1>Pendaftaran Akun Baru</h1>
