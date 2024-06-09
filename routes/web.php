@@ -24,3 +24,8 @@ Route::get('/transfers', function () {
 Route::get('/page-transfer', function () {
     return view('pageTransfer');
 });
+
+// Route tidak sesuai, hanya untuk melihat view saja sementara
+Route::get('/home', function () {
+    return view('home');
+});

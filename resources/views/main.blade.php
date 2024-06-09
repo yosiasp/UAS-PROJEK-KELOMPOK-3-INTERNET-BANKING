@@ -11,7 +11,7 @@
             <p class="logo">INTERNET BANKING SEJAHTERA</p>
             <ul>
                 <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="{{ url('/costumer-service') }}">Costumer Service</a></a></li>
+                <li><a href="{{ url('/customer-service') }}">Customer Service</a></a></li>
             </ul>
         </div>
 
@@ -32,7 +32,7 @@
         <div class="image">
             <img src = "{{ asset('img/LandingPage.JPG') }}" width="100%" height="100%">
         </div>
-        
+
         <div class="footer">
             <p>Copyright &#169 2024 Bank Sejahtera (Persero) tbk</p>
         </div>
