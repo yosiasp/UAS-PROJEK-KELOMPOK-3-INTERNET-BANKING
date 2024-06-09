@@ -17,8 +17,8 @@ class UserControllwe extends Controller
     }
 
     // Fungsi untuk menampilkan syarat dan ketentuan ((boleh ubah variabelnya biar sama)
-    public function showTermsAnd Conditions()
+    public function showTermsAndConditions()
     {
-        return view('terms')
+        return view('terms');
     }
 }
