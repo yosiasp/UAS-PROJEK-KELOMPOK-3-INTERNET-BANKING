@@ -1,16 +1,15 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('main');
+Route::get('/', [UserController::class, 'index']);
+
+Route::get('/customer-service', function () {
+    return view('customerService');
 });
 
-Route::get('/costumer-service', function () {
-    return view('costumerService');
-});
-
-Route::get('/create-account', function () {
+Route::post('/create-account', function () {
     return view('createAccount');
 });
 
@@ -24,4 +23,9 @@ Route::get('/transfers', function () {
 
 Route::get('/page-transfer', function () {
     return view('pageTransfer');
+});
+
+// Route tidak sesuai, hanya untuk melihat view saja sementara
+Route::get('/home', function () {
+    return view('home');
 });
