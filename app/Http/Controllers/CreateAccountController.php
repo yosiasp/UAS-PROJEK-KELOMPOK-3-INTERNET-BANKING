@@ -17,7 +17,7 @@ class CreateAccountController extends Controller
         $validatedData = $request->validate([
             'fullname' => 'required',
             'dob' => 'required|date',
-            'gender' => 'required',
+            'gender' => 'nullable',
             'address' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
