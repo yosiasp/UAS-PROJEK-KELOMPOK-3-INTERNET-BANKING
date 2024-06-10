@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,9 +9,12 @@ Route::get('/customer-service', function () {
     return view('customerService');
 });
 
-Route::post('/create-account', function () {
-    return view('createAccount');
-});
+Route::get('/create-account', [CreateAccountController::class, 'showCreateAccountForm']);
+Route::post('/create-account', [CreateAccountController::class, 'createAccount']);
+
+// Route::POST('/create-account', function () {
+//     return view('createAccount');
+// });
 
 Route::get('/syarat-ketentuan', function () {
     return view('syaratKetentuan');

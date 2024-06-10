@@ -9,6 +9,7 @@
         "ext-pdo_pgsql": "*",
         "ext-pgsql": "*",
         "lib-pgsql-libpq": "*",
+        "laravel/fortify": "^1.21",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9"
     },
