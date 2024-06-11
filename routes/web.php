@@ -12,10 +12,6 @@ Route::get('/customer-service', function () {
 Route::get('/create-account', [CreateAccountController::class, 'showCreateAccountForm']);
 Route::post('/create-account', [CreateAccountController::class, 'createAccount']);
 
-// Route::POST('/create-account', function () {
-//     return view('createAccount');
-// });
-
 Route::get('/syarat-ketentuan', function () {
     return view('syaratKetentuan');
 });
