@@ -30,4 +30,4 @@ Route::get('/home', function () {
     return view('home');
 });
 
-use App\Http\Controllers\PinController;
+
