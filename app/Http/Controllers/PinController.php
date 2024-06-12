@@ -13,7 +13,7 @@ class PinController extends Controller
         // Validasi input
         $request->validate([
             'pinlama' => 'required',
-            'pinbaru' => 'required|confirmed|min:6', // Minimal 6 karakter
+            'pinbaru' => 'required|confirmed|min:6|max:6', // Harus 6 angka
         ]);
 
         $user = Auth::user();
