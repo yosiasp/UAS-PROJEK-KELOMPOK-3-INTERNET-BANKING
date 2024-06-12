@@ -1,10 +1,10 @@
 <?php
 use App\Http\Controllers\CreateAccountController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PinController;
 
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [MainController::class, 'index']);
 
 Route::get('/customer-service', function () {
     return view('customerService');
