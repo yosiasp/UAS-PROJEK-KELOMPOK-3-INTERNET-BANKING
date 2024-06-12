@@ -18,7 +18,7 @@
     <div class="hero">
         <div class="content">
             <h1>Pendaftaran Akun Baru</h1>
-            <form action="{{ url('/create-account') }}" method="post" class="create-account-form">
+            <form action="{{ url('/create-account') }}" method="POST" class="create-account-form">
                 @csrf
                 <label for="fullname">Nama Lengkap:</label>
                 <input type="text" id="fullname" name="fullname" required>
