@@ -2,6 +2,7 @@
 use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PinController;
 
 Route::get('/', [UserController::class, 'index']);
 
@@ -28,3 +29,5 @@ Route::get('/page-transfer', function () {
 Route::get('/home', function () {
     return view('home');
 });
+
+use App\Http\Controllers\PinController;
