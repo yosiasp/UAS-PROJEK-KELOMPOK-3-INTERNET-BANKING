@@ -25,15 +25,16 @@ class CreateAccountController extends Controller
             'pin' => 'required',
         ]);
         
-        $accounts = new CreateAccount;
-        $accounts->fullname = $request->fullname;
-        $accounts->dob = $request->dob;
-        $accounts->gender = $request->gender;
-        $accounts->address = $request->address;
-        $accounts->phone = $request->phone;
-        $accounts->email = $request->email;
-        $accounts->username = $request->username;
-        $accounts->pin = $request->pin;
+        $accounts = CreateAccount::create([
+            'fullname' => $request->fullname,
+            'dob' => $request->dob,
+            'gender' => $request->gender,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'username' => $request->username,
+            'pin' => $request->pin,
+        ]);
 
         return redirect()->route('home')->with('success', 'Akun berhasil dibuat.');
     }
