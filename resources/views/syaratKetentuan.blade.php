@@ -17,26 +17,36 @@
 
     <div class="hero">
         <div class="content">
-            <h1>Terms and Conditions</h1>
+            <h2>SYARAT DAN KETENTUAN PEMBUKAAN REKENING</h2>
             <div class="terms-content">
-                <p>Welcome to Bank Sejahtera Internet Banking. Please read these terms and conditions carefully before using our services.</p>
+                <p>Sehubungan dengan pembukaan rekening oleh PT. Bank Sejahtera (Persero) Tbk. atas permintaan pemohon (selanjutnya disebut 
+                    Nasabah), dengan ini Nasabah menyatakan setuju bahwa rekening tersebut tunduk dan akan ditatakerjakan sesuai dengan syarat dan ketentuan dibawah ini : </p>
 
-                <h2>1. Acceptance of Terms</h2>
-                <p>By using our services, you agree to be bound by these terms and conditions.</p>
+                <h2>1. REKENING</h2>
+                <p>Pembukaan rekening harus didasarkan atas permohonan oleh Nasabah yang memenuhi segala persyaratan yang ditentukan.
+                Bank melarang segala bentuk penyalahgunaan rekening, termasuk penggunaan untuk sarana tindakan berindikasi pidana. Dalam hal terdapat indikasi penyalahgunaan rekening 
+                oleh nasabah, maka Bank berhak untuk melakukan pemblokiran rekening, mendebet kembali dana untuk diselesaikan sesuai dengan ketentuan yang berlaku dan/atau 
+                melakukan penutupan rekening.</p>
 
-                <h2>2. User Responsibilities</h2>
-                <p>You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.</p>
+                <h2>2. INFORMASI NASABAH</h2>
+                <p>Bank berhak untuk meminta informasi dan/atau menatakerjakan data profil Nasabah sesuai dengan kebutuhannya dan sesuai dengan peraturan 
+                    perundang-undangan yang berlaku.</p>
 
-                <h2>3. Privacy Policy</h2>
-                <p>Your privacy is important to us. Please review our privacy policy to understand how we collect, use, and protect your information.</p>
+                <h2>3. KEBIJAKAN DAN KETENTUAN BANK</h2>
+                <p>Nasabah dengan ini tunduk pada kebijakan dan ketentuan Bank yang berkaitan dengan :</p>
 
-                <h2>4. Changes to Terms</h2>
-                <p>We reserve the right to modify these terms at any time. Your continued use of our services constitutes acceptance of the revised terms.</p>
+                <p>1.Kebijakan administrasi dan operasional Bank</p>
+                <p>2.Kebijakan mengenai layanan jasa dan / atau fasilitas-fasilitas yang diberikan oleh Bank</p>
+                <p>3.Kebijakan berkaitan dengan tarif/biaya layanan jasa perbankan, bunga termasuk cara perhitungannya</p>
 
-                <h2>5. Contact Information</h2>
-                <p>If you have any questions about these terms, please contact us at support@banksejahtera.com.</p>
 
-                <p>Thank you for choosing Bank Sejahtera.</p>
+                <h2>4. KUASA PEMBERIAN NASABAH</h2>
+                <p>Segala kuasa yang diberikan Nasabah kepada Bank tidak dapat ditarik atau berakhir menurut ketentuan Pasal 1813 Kitab Undang-Undang Hukum Perdata maupun 
+                    oleh sebab apapun juga. Kuasa-kuasa tersebut merupakan bagian yang tidak dapat dipisahkan dari Syarat dan Ketentuan Pembukaan Rekening ini.</p>
+
+                <h2>5. LAIN-LAIN</h2>
+                <p>Setiap pertanyaan/komplain/pengaduan dapat disampaikan kepada CALL CENTER BANK SEJAHTERA di hotline: 123-456-7890.</p>
+
             </div>
         </div>
     </div>
