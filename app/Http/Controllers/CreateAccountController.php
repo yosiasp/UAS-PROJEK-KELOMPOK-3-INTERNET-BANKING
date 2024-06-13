@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CreateAccountController extends Controller
 {
-    public function showCreateAccountForm()
+    public function index()
     {
         return view('createAccount');
     }
