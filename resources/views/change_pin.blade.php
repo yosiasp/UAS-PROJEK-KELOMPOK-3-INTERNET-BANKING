@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ganti PIN</title>
+    <title>Ganti PIN - Bank Sejahtera</title>
 </head>
 <body>
     <form action="{{ route('change.pin') }}" method="POST">

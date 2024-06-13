@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/transfer.css') }}">
-    <title>Internet Banking - Bank Sejahtera</title>
+    <title>Transfer Bank - Bank Sejahtera</title>
 </head>
 <body>
     <div class="header">
