@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <title>Home - Internet Banking Sejahtera</title>
+    <link rel="stylesheet" href="{{ asset('css/mutation.css') }}">
+    <title>Transfer - Bank Sejahtera</title>
 </head>
 <body>
     <div class="header">
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
             <li><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ url('/customer-service') }}">Costumer Service</a></li>
+            <li><a href="{{ url('/customer-service') }}">Customer Service</a></li>
             <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
         </ul>
     </div>
@@ -38,11 +38,29 @@
                 </li>
             </ul>
         </div>
-        
+
         <div class="content">
-            <h1>Selamat Datang di Internet Banking Sejahtera</h1>
-            <p>Silahkan memilih menu di sebelah kiri untuk mengakses fitur-fitur kami.</p>
-            <img src = "{{ asset('img/Home.JPG') }}" width="60%" height="60%">
+            <h1>Mutasi Rekening</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Account Number</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($transfers as $transfer)
+                    <tr>
+                        <td>{{ $transfer->date }}</td>
+                        <td>{{ $transfer->account }}</td>
+                        <td>{{ $transfer->amount }}</td>
+                        <td>{{ $transfer->description }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
