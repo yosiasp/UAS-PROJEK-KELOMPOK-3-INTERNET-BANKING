@@ -18,12 +18,14 @@ Route::get('/syarat-ketentuan', function () {
     return view('syaratKetentuan');
 });
 
-Route::get('/transfers', function () {
+// Route tidak sesuai, hanya untuk melihat view saja sementara
+Route::get('/transfer', function () {
     return view('transfer');
 });
 
-Route::get('/page-transfer', function () {
-    return view('pageTransfer');
+// Route tidak sesuai, hanya untuk melihat view saja sementara
+Route::get('/mutation', function () {
+    return view('mutation');
 });
 
 // Route tidak sesuai, hanya untuk melihat view saja sementara
