@@ -10,7 +10,7 @@
         <div class="header">
             <p class="logo">INTERNET BANKING SEJAHTERA</p>
             <ul>
-                <li><a href="{{ url('/') }}">Beranda</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="{{ url('/customer-service') }}">Customer Service</a></a></li>
             </ul>
         </div>
@@ -18,19 +18,13 @@
         <div class="hero">
             <div class="content">
                 <h1>Login ke Internet Banking</h1>
-                <form action="home" method="POST">
-                    @csrf
                 <div class="loginWindow">
                     <p>Username:</p>
-                    <label for="username" class="form-label"></label>
-                    <input type="email" id="username" name="username">
+                    <input type="text" id="username" name="username">
                     <p>PIN:</p>
-                    <label for="password"></label>
-                    <label for="password" class="form-label"></label>
                     <input type="password" id="password" name="password">
                     <button>Masuk</button>
                     <button class ="newAccount" onclick="location.href='{{ url('/create-account') }}'" >Buat akun</button>
-                </form>
                 </div>
             </div>
         </div>

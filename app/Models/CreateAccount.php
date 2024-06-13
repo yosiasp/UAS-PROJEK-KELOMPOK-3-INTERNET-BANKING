@@ -18,7 +18,7 @@ class CreateAccount extends Model
         'email',
         'username',
         'pin',
-        'confirm-pin',
-        'terms',
     ];
+
+    protected $table = 'accounts';
 }

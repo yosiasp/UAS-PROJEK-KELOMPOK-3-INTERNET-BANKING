@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CreateAccount;
 
 class CreateAccountController extends Controller
 {
@@ -10,28 +11,30 @@ class CreateAccountController extends Controller
     {
         return view('createAccount');
     }
-
-    public function createAccount(Request $request)
+    
+    public function store(Request $request)
     {
-        // Proses validasi data yang diterima dari form
-        $validatedData = $request->validate([
+        $request->validate([
             'fullname' => 'required',
-            'dob' => 'required|date',
-            'gender' => 'nullable',
+            'dob' => 'required',
+            'gender' => 'required',
             'address' => 'required',
             'phone' => 'required',
-            'email' => 'required|email',
+            'email' => 'required',
             'username' => 'required',
             'pin' => 'required',
-            'confirm-pin' => 'required',
-            'terms' => 'accepted',
         ]);
+        
+        $accounts = new CreateAccount;
+        $accounts->fullname = $request->fullname;
+        $accounts->dob = $request->dob;
+        $accounts->gender = $request->gender;
+        $accounts->address = $request->address;
+        $accounts->phone = $request->phone;
+        $accounts->email = $request->email;
+        $accounts->username = $request->username;
+        $accounts->pin = $request->pin;
 
-        // Proses pembuatan akun berdasarkan data yang diterima
-        // Misalnya:
-        // $newAccount = Account::create($validatedData);
-
-        // Redirect atau tampilkan pesan sukses setelah berhasil membuat akun
-    
+        return redirect()->route('home')->with('success', 'Akun berhasil dibuat.');
     }
 }
