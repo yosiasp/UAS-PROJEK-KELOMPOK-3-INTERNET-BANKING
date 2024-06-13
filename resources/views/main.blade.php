@@ -19,11 +19,14 @@
             <div class="content">
                 <h1>Login ke Internet Banking</h1>
                 <div class="loginWindow">
-                    <p>Username:</p>
-                    <input type="text" id="username" name="username">
-                    <p>PIN:</p>
-                    <input type="password" id="password" name="password">
-                    <button>Masuk</button>
+                    <form action="{{ url('/') }}" method="POST" class="login-form">
+                        @csrf
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                        <label for="pin">PIN:</label>
+                        <input type="password" id="password" name="password" required>
+                        <button>Masuk</button>
+                    </form>
                     <button class ="newAccount" onclick="location.href='{{ url('/create-account') }}'" >Buat akun</button>
                 </div>
             </div>
