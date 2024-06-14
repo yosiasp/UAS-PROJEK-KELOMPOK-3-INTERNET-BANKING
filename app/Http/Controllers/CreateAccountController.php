@@ -15,14 +15,14 @@ class CreateAccountController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fullname' => 'required',
-            'dob' => 'required',
-            'gender' => 'required',
-            'address' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'username' => 'required',
-            'pin' => 'required',
+            'fullname' => 'required|string',
+            'dob' => 'required|date',
+            'gender' => 'nullable',
+            'address' => 'required|string',
+            'phone' => 'required|integer',
+            'email' => 'required|email',
+            'username' => 'required|string',
+            'pin' => 'required|integer|min:6|max:6',
         ]);
         
         $accounts = CreateAccount::create([
