@@ -19,12 +19,18 @@
             <div class="content">
                 <h1>Login ke Internet Banking</h1>
                 <div class="loginWindow">
-                    <form action="{{ url('/') }}" method="POST" class="login-form">
+                    <form action="{{ route('login') }}" method="POST" class="login-form">
                         @csrf
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" required>
+                        @error('username')
+                            <p>{{ $message }}</p>
+                        @enderror
                         <label for="pin">PIN:</label>
                         <input type="password" id="password" name="password" required>
+                        @error('password')
+                            <p>{{ $message }}</p>
+                        @enderror
                         <button>Masuk</button>
                     </form>
                     <button class ="newAccount" onclick="location.href='{{ url('/create-account') }}'" >Buat akun</button>
