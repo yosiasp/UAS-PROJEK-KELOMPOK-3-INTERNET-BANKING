@@ -46,14 +46,15 @@
                 <input type="text" id="username" name="username" required>
 
                 <label for="pin">PIN:</label>
-                <input type="password" id="pin" name="pin" required>
+                <div class="password-wrapper">
+                    <input type="password" id="pin" name="pin" required>
+                    <span class="toggle-password" onmousedown="showPassword('pin')" onmouseup="hidePassword('pin')" onmouseout="hidePassword('pin')">👁️</span>
+                </div>
 
                 <label for="confirm-pin">Konfirmasi PIN:</label>
-                <input type="password" id="confirm-pin" name="confirm-pin" required>
-
-                <div class="show-password">
-                    <input type="checkbox" id="show-password" onclick="viewPassword()">
-                    <label for="show-password">Lihat Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="confirm-pin" name="confirm-pin" required>
+                    <span class="toggle-password" onmousedown="showPassword('confirm-pin')" onmouseup="hidePassword('confirm-pin')" onmouseout="hidePassword('confirm-pin')">👁️</span>
                 </div>
 
                 <div class="terms-conditions">
@@ -70,16 +71,12 @@
     </div>
 
     <script>
-        function viewPassword() {
-            var pin = document.getElementById('pin');
-            var confirmPin = document.getElementById('confirm-pin');
-            if (pin.type === 'password' && confirmPin.type === 'password') {
-                pin.type = 'text';
-                confirmPin.type = 'text';
-            } else {
-                pin.type = 'password';
-                confirmPin.type = 'password';
-            }
+        function showPassword(id) {
+            document.getElementById(id).type = 'text';
+        }
+
+        function hidePassword(id) {
+            document.getElementById(id).type = 'password';
         }
 
         function validateTermsForm() {
