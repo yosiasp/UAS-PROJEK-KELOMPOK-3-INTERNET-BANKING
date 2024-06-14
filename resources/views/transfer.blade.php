@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/transfer.css') }}">
-    <title>Transfer Bank - Bank Sejahtera</title>
+    <title>Transfer Dana</title>
 </head>
 <body>
     <div class="header">
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
-            <li><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ url('/customer-service') }}">Customer Service</a></li>
+            <li><a href="{{ url('/home') }}">Home</a></li>
+            <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
             <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
         </ul>
     </div>

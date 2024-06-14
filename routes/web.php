@@ -5,6 +5,8 @@ use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PinController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TransferController;
+use App\Http\Controllers\MutationController;
 
 Route::get('/', [MainController::class, 'index']);
 
@@ -20,18 +22,14 @@ Route::get('/syarat-ketentuan', function () {
 });
 
 // Route tidak sesuai, hanya untuk melihat view saja sementara
-Route::get('/transfer', function () {
-    return view('transfer');
-});
+Route::get('/transfer', [TransferController::class, 'index']);
 
 // Route tidak sesuai, hanya untuk melihat view saja sementara
-Route::get('/mutation', function () {
-    return view('mutation');
-});
+Route::get('/mutation', [MutationController::class, 'index']);
 
 // Route tidak sesuai, hanya untuk melihat view saja sementara
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::post('/home', [HomeController::class, 'index']);
+
 
 
 
