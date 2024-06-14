@@ -130,3 +130,15 @@ body {
 .footer p {
     color: white;
 }
+
+.password-wrapper {
+    position:relative;
+    width: 258px;
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
