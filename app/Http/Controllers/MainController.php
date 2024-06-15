@@ -2,34 +2,30 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\CreateAccount;
+use App\Models\Account;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function index() 
+    public function index()
     {
         return view("main");
     }
 
     public function login(Request $request)
     {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
+        $username = $request->input('username');
+        $pin = $request->input('pin');
 
-    $data = [
-        'username' => $request->username,
-        'password' => $request->password,
-    ];
+        $account = Account::where('username', $username)->first();
 
-    if(Auth::attempt($data)){
+        if ($account && $account->pin === $pin) {
+            // Login successful
             return redirect()->route('home');
         } else {
-            return redirect()->back()->with('error', 'Username atau Password Salah');
+            // Login failed, redirect back to login with error message
+            return redirect()->route('main')->with('error', 'Username or PIN is incorrect.');
         }
     }
 }
