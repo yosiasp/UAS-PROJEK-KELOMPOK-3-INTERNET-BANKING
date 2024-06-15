@@ -13,7 +13,7 @@ class MainController extends Controller
         return view("main");
     }
 
-    public function login(Request $request)
+    public function login_proses(Request $request)
     {
         $username = $request->input('username');
         $pin = $request->input('pin');

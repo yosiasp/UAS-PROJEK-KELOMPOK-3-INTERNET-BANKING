@@ -12,7 +12,7 @@ Route::get('/customer-service', function () {
     return view('customerService');
 });
 
-Route::get('/', [MainController::class, 'index'])->name('ain');
+Route::get('/', [MainController::class, 'index'])->name('main');
 Route::post('/login', [MainController::class, 'login_proses'])->name('login');
 
 // Memperbaiki penulisan route yang tidak benar
