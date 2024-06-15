@@ -27,7 +27,7 @@
                 <input type="date" id="dob" name="dob" required>
 
                 <label for="gender">Jenis Kelamin:</label>
-                <select id="gender" name="gender" required>
+                <select id="gender" name="gender">
                     <option value="">Pilih opsi</option>
                     <option value="Laki-laki">Laki-laki</option>
                     <option value="Perempuan">Perempuan</option>

@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('fullname');
             $table->date('dob');
-            $table->string('gender');
-            $table->string('address');
+            $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();
+            $table->text('address');
             $table->integer('phone');
-            $table->string('email');
-            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('username')->unique();
             $table->integer('pin');
             $table->timestamps();
         });
