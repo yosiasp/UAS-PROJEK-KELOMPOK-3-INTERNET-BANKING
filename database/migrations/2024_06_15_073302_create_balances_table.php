@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('balances', function (Blueprint $table) {
             $table->id();
+            $table->string('username')->unique();
             $table->string('accountNumber');
-            $table->decimal('amount', 15, 2);
+            $table->decimal('balance', 15, 2);
             $table->timestamps();
         });
     }
