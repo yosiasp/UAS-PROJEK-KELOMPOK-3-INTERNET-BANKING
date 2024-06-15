@@ -51,7 +51,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($mutations as $mutation)
+                    @foreach($personalMutations as $mutation)
                     <tr>
                         <td>{{ $mutation->date }}</td>
                         <td>{{ $mutation->account }}</td>
