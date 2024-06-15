@@ -25,7 +25,7 @@ class CreateAccountController extends Controller
             'pin' => ['required', 'integer', 'min:6', 'max:6'],
         ]);
         
-        CreateAccount::create([
+        Account::create([
             'fullname' => $request->fullname,
             'dob' => $request->dob,
             'gender' => $request->gender,
