@@ -51,12 +51,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($transfers as $transfer)
+                    @foreach($mutations as $mutation)
                     <tr>
-                        <td>{{ $transfer->date }}</td>
-                        <td>{{ $transfer->account }}</td>
-                        <td>{{ $transfer->amount }}</td>
-                        <td>{{ $transfer->description }}</td>
+                        <td>{{ $mutation->date }}</td>
+                        <td>{{ $mutation->account }}</td>
+                        <td>{{ $mutation->amount }}</td>
+                        <td>{{ $mutation->type }}</td>
+                        <td>{{ $mutation->news }}</td>
                     </tr>
                     @endforeach
                 </tbody>
