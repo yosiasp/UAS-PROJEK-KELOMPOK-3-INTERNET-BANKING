@@ -27,7 +27,7 @@
                             <p>{{ $message }}</p>
                         @enderror
                         <label for="pin">PIN:</label>
-                        <input type="pin" id="pin" name="pin" required>
+                        <input type="password" id="pin" name="pin" required>
                         @error('pin')
                             <p>{{ $message }}</p>
                         @enderror

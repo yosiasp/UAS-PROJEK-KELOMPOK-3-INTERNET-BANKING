@@ -17,10 +17,10 @@ return new class extends Migration
             $table->date('dob');
             $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable();
             $table->text('address');
-            $table->integer('phone');
+            $table->string('phone'); 
             $table->string('email')->unique();
             $table->string('username')->unique();
-            $table->integer('pin');
+            $table->string('pin'); 
             $table->timestamps();
         });
     }

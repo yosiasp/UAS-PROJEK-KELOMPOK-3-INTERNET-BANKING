@@ -29,9 +29,5 @@ Route::get('/transfer', [TransferController::class, 'index']);
 // Route tidak sesuai, hanya untuk melihat view saja sementara
 Route::get('/mutation', [MutationController::class, 'index']);
 
-// Route tidak sesuai, hanya untuk melihat view saja sementara
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-
-
+Route::get('/{id}/home', [HomeController::class, 'index'])->name('home');
 
