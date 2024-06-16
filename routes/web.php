@@ -23,11 +23,11 @@ Route::get('/syarat-ketentuan', function () {
     return view('syaratKetentuan');
 });
 
-// Route tidak sesuai, hanya untuk melihat view saja sementara
-Route::get('/transfer', [TransferController::class, 'index']);
-
-// Route tidak sesuai, hanya untuk melihat view saja sementara
-Route::get('/mutation', [MutationController::class, 'index']);
-
 Route::get('/{id}/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/{id}/transfer', [TransferController::class, 'index'])->name('transfer');
+
+Route::get('/{id}/mutation', [MutationController::class, 'index'])->name('mutation');
+
+
 
