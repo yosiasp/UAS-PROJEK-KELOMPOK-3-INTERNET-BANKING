@@ -16,15 +16,17 @@ class CreateAccountController extends Controller
     {
         // Validasi
         $request->validate([
-            'fullname' => ['required', 'string', 'max:255'],
-            'dob' => ['required', 'date'],
-            'gender' => ['required', 'string', 'in:Laki-laki,Perempuan'], 
-            'address' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'integer', 'digits_between:10,15'],
-            'email' => ['required', 'email', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:30'],
-            'pin' => ['required', 'integer', 'min:6', 'max:6', 'confirmed'],
+            'fullname' => 'required|string|max:255',
+            'dob' => 'required|date',
+            'gender' => 'required|string|in:Laki-laki,Perempuan',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|digits_between:10,15', 
+            'email' => 'required|email|string|max:255|unique:accounts',
+            'username' => 'required|string|max:30|unique:accounts',
+            'pin' => 'required|string|size:6|confirmed', 
         ]);
+        
+
 
         $accounts = new Account;
         $accounts->fullname = $request->fullname;
@@ -37,6 +39,6 @@ class CreateAccountController extends Controller
         $accounts->pin = $request->pin;
         $accounts->save();
 
-        return redirect()->route('home')->with('success', 'Akun berhasil dibuat.');
+        return redirect()->route('main')->with('success', 'Akun berhasil dibuat.');
     }
 }

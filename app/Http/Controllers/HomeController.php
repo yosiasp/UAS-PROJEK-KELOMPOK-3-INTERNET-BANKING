@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
+
 class HomeController extends Controller
 {
-    public function index() 
+    public function index($id) 
     {
-        return view("home");
+        $account = Account::find($id);
+        if (!$account) {
+            abort(404);
+        }
+
+        return view('home', compact('account'));
     }
 }

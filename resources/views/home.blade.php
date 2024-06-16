@@ -40,7 +40,7 @@
         </div>
         
         <div class="content">
-            <h1>Selamat Datang di Internet Banking Sejahtera</h1>
+            <h1>Selamat Datang {{ $account->fullname }}</h1>
             <p>Silahkan memilih menu di sebelah kiri untuk mengakses fitur-fitur kami.</p>
             <img src = "{{ asset('img/Home.JPG') }}" width="60%" height="60%">
         </div>

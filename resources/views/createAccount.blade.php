@@ -37,7 +37,7 @@
                 <input type="text" id="address" name="address" required>
 
                 <label for="phone">Nomor Telepon:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}" required>
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>

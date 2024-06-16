@@ -21,11 +21,11 @@ class MainController extends Controller
         $account = Account::where('username', $username)->first();
 
         if ($account && $account->pin === $pin) {
-            // Login successful
-            return redirect()->route('home');
+            // Login sukses
+            return redirect()->route('home', ['id' => $account->id]);
         } else {
-            // Login failed, redirect back to login with error message
-            return redirect()->route('main')->with('error', 'Username or PIN is incorrect.');
+            // Login gagal, kembali ke main dengan error message
+            return redirect()->route('main')->with('error', 'Username atau PIN salah.');
         }
     }
 }
