@@ -14,4 +14,6 @@ class Balance extends Model
         'accountNumber',
         'balance'
     ];
+
+    protected $table = 'balances';
 }
