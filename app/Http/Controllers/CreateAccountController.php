@@ -16,13 +16,13 @@ class CreateAccountController extends Controller
     {
         // Validasi
         $request->validate([
-            'fullname' => ['required', 'string'],
+            'fullname' => ['required', 'string', 'max:255'],
             'dob' => ['required', 'date'],
             'gender' => ['required', 'string', 'in:Laki-laki,Perempuan'], 
-            'address' => ['required', 'string'],
-            'phone' => ['required', 'integer'],
-            'email' => ['required', 'string'],
-            'username' => ['required', 'string'],
+            'address' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'integer', 'digits_between:10,15'],
+            'email' => ['required', 'email', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:30'],
             'pin' => ['required', 'integer', 'min:6', 'max:6', 'confirmed'],
         ]);
 
