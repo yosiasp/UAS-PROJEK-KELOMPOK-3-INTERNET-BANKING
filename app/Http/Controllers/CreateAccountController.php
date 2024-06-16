@@ -14,6 +14,18 @@ class CreateAccountController extends Controller
     
     public function store(Request $request)
     {
+        // Validasi
+        $request->validate([
+            'fullname' => ['required', 'string'],
+            'dob' => ['required', 'date'],
+            'gender' => ['required', 'string', 'in:Laki-laki,Perempuan'], 
+            'address' => ['required', 'string'],
+            'phone' => ['required', 'integer'],
+            'email' => ['required', 'string'],
+            'username' => ['required', 'string'],
+            'pin' => ['required', 'integer', 'min:6', 'max:6', 'confirmed'],
+        ]);
+
         $accounts = new Account;
         $accounts->fullname = $request->fullname;
         $accounts->dob = $request->dob;
