@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;   
 use App\Models\Balance;   
+use Illuminate\Support\Facades\Hash;
 
 class CreateAccountController extends Controller
 {
@@ -35,7 +36,7 @@ class CreateAccountController extends Controller
         $accounts->phone = $request->phone;
         $accounts->email = $request->email;
         $accounts->username = $request->username;
-        $accounts->pin = $request->pin;
+        $accounts->pin = Hash::make($request->pin);
         $accounts->save();
 
         // Buat nomor rekening acak dengan panjang 13 digit
