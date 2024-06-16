@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
 
 class TransferController extends Controller
 {
-    public function index() 
+    public function index($id) 
     {
-        return view("transfer");
+        $account = Account::find($id);
+
+        return view("transfer",  compact('account'));
     }
 }

@@ -10,7 +10,7 @@
     <div class="header">
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
-            <li><a href="{{ url('/home') }}">Home</a></li>
+            <li><a href="{{ route('home', ['id' => $account->id]) }}">Home</a></li>
             <li><a href="{{ url('/customer-service') }}" target="_blank">Costumer Service</a></li>
             <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
         </ul>
