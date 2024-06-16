@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class MainController extends Controller
 
         $account = Account::where('username', $username)->first();
 
-        if ($account && $account->pin === $pin) {
+        if ($account && Hash::check($pin, $account->pin)) {
             // Login sukses
             return redirect()->route('home', ['id' => $account->id]);
         } else {
