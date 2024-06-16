@@ -18,7 +18,7 @@
     <div class="hero">
         <div class="content">
             <h1>Pendaftaran Akun Baru</h1>
-            <form action="{{ url('/create-account') }}" method="POST" class="create-account-form">
+            <form action="{{ url('/create-account') }}" method="POST" class="create-account-form" onsubmit="return validateTermsForm()">
                 @csrf
                 <label for="fullname">Nama Lengkap:</label>
                 <input type="text" id="fullname" name="fullname" required>
@@ -53,8 +53,8 @@
 
                 <label for="confirm-pin">Konfirmasi PIN:</label>
                 <div class="password-wrapper">
-                    <input type="password" id="confirm-pin" name="confirm-pin" required>
-                    <span class="toggle-password" onmousedown="showPassword('confirm-pin')" onmouseup="hidePassword('confirm-pin')" onmouseout="hidePassword('confirm-pin')">👁️</span>
+                    <input type="password" id="confirm-pin" name="pin_confirmation" required>
+                    <span class="toggle-password" onmousedown="showPassword('pin_confirmation')" onmouseup="hidePassword('pin_confirmation')" onmouseout="hidePassword('pin_confirmation')">👁️</span>
                 </div>
 
                 <div class="terms-conditions">
