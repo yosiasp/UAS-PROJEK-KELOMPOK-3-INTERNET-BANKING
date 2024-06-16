@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;   
+use App\Models\Balance;   
 
 class CreateAccountController extends Controller
 {
@@ -26,8 +27,6 @@ class CreateAccountController extends Controller
             'pin' => 'required|string|size:6|confirmed', 
         ]);
         
-
-
         $accounts = new Account;
         $accounts->fullname = $request->fullname;
         $accounts->dob = $request->dob;
@@ -38,6 +37,15 @@ class CreateAccountController extends Controller
         $accounts->username = $request->username;
         $accounts->pin = $request->pin;
         $accounts->save();
+
+        // Buat nomor rekening acak dengan panjang 13 digit
+        $accountNumber = mt_rand(1000000000000, 9999999999999);
+
+        $balances = new Balance;
+        $balances->username = $request->username;
+        $balances->accountNumber = $accountNumber;
+        $balances->balance = 0;
+        $balances->save();
 
         return redirect()->route('main')->with('success', 'Akun berhasil dibuat.');
     }
