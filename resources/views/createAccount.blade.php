@@ -53,7 +53,7 @@
 
                 <label for="confirm-pin">Konfirmasi PIN:</label>
                 <div class="password-wrapper">
-                    <input type="password" id="confirm-pin" name="pin_confirmation" required>
+                    <input type="password" id="pin_confirmation" name="pin_confirmation" required>
                     <span class="toggle-password" onmousedown="showPassword('pin_confirmation')" onmouseup="hidePassword('pin_confirmation')" onmouseout="hidePassword('pin_confirmation')">👁️</span>
                 </div>
 
