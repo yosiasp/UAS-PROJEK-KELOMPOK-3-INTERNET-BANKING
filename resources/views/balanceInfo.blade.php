@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/balanceInfo.css') }}">
-    <title>Home</title>
+    <title>Informasi Rekening</title>
 </head>
 <body>
     <div class="header">
@@ -22,7 +22,7 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
                     <ul class="sub-menu" id="account-info">
-                        <li><a href="#">Informasi Saldo</a></li>
+                        <li><a href="{{ route('balanceInfo', ['id' => $account->id]) }}">Informasi Saldo</a></li>
                         <li><a href="#">Mutasi Rekening</a></li>
                     </ul>
                 </li>
@@ -40,8 +40,14 @@
         </div>
         
         <div class="content">
-            <h1>{{ $balanceInfo->accountNumber }}</h1>
-            <h1>{{ $balanceInfo->balance }}</h1>
+            <div class="column1">
+                <P class="row1">No Rekening</P>
+                <p class="row2">{{ $balanceInfo->accountNumber }}</p>
+            </div>
+            <div class="column2">
+                <P class="row1">Saldo Efektif</P>
+                <p class="row2">{{ $balanceInfo->balance }}</p>   
+            </div>
         </div>
     </div>
 
