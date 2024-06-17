@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Account;
 use App\Models\Balance;
 
-class PinController extends Controller
+class ChangePinController extends Controller
 {
     public function index($id)
     {
-        return view("changePin", compact('account', 'changePin'));
+        $account = Account::find($id);
+        return view("changePin", compact('account'));
     }
 
     public function update(Request $request, $id)

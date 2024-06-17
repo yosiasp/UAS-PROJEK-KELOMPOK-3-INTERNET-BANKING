@@ -22,7 +22,7 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
                     <ul class="sub-menu" id="account-info">
-                        <li><a href="#">Informasi Saldo</a></li>
+                        <li><a href="{{ route('balanceInfo', ['id' => $account->id]) }}">Informasi Saldo</a></li>
                         <li><a href="#">Mutasi Rekening</a></li>
                     </ul>
                 </li>
@@ -40,13 +40,14 @@
         </div>    
 
     <div class="content">
-        <h1>Change PIN</h1>
-        <form action="{{ route('change-pin') }}" method="post">
+        <h1>Ganti PIN</h1>
+        <form class='passwordInput' action="{{ route('change-pin', ['id' => $account->id]) }}" method="post">
             @csrf
             @method('PUT')
-            <input type="password" name="pinlama" placeholder="Masukkan PIN lama">
-            <input type="password" name="pinbaru" placeholder="Masukkan PIN baru">
-            <button type="submit">Change PIN</button>
+            <input type="password" name="pinLama" placeholder="Masukkan PIN Lama Anda Saat Ini">
+            <input type="password" name="pinBaru" placeholder="Masukkan PIN Baru (6 Angka)">
+            <input type="password" name="konfirmasiPinBaru" placeholder="Konfirmasi Ulang PIN Baru">
+            <button type="submit">Ganti PIN</button>
         </form>
     </div>
     </div>
