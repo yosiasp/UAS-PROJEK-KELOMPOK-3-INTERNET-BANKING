@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Suport\Auth;
-Use Illumintate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
+Use Illumintate\Support\Facades\Hash;
 use App\Models\User;
 
 class EditEmailController extends Controller
@@ -14,7 +14,7 @@ class EditEmailController extends Controller
         return view('change-email');
     }
     
-    public function showChangeEmailForm(Request $request)
+    public function updateEMail(Request $request)
     {
         $return->validate([
             'old_email' => 'required|email',
@@ -23,7 +23,7 @@ class EditEmailController extends Controller
 
         $user = Auth::user();
 
-        if ($user->email 1== $request->new_email) {
+        if ($user->email !== $request->old_email) {
             return back()->withErrors(['old_email' => 'old email wrong, please check your email']);
         }
 
