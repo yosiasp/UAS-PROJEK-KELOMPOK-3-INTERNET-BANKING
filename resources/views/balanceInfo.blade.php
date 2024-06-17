@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/balanceInfo.css') }}">
     <title>Home</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
                     <ul class="sub-menu" id="account-info">
-                        <li><a href="{{ route('balanceInfo', ['id' => $account->id]) }}">Informasi Saldo</a></li>
+                        <li><a href="#">Informasi Saldo</a></li>
                         <li><a href="#">Mutasi Rekening</a></li>
                     </ul>
                 </li>
@@ -40,9 +40,8 @@
         </div>
         
         <div class="content">
-            <h1>Selamat Datang {{ $account->fullname }}</h1>
-            <p>Silahkan memilih menu di sebelah kiri untuk mengakses fitur-fitur kami.</p>
-            <img src="{{ asset('img/Home.JPG') }}" width="60%" height="60%">
+            <h1>{{ $balanceInfo->accountNumber }}</h1>
+            <h1>{{ $balanceInfo->balance }}</h1>
         </div>
     </div>
 
