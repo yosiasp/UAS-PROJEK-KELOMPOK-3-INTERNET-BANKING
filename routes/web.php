@@ -38,6 +38,6 @@ Route::post('/{id}/home/change-pin', [PinController::class, 'update'])->name('ch
 
 Route::get('/{id}/balanceInfo', [BalanceInfoController::class, 'index'])->name('balanceInfo');
 
-// Route::('/change-email', [EditEmailController::class, 'showChangeEmailForm'])->name('changeEmailForm);
-// Route::post('change-email', [EditEmailController::class, 'updateEmail')]->name('updateEmail');
+// Route::get('/change-email', [UpdateEmailController::class, 'showChangeEmailForm'])->name('changeEmailForm);
+// Route::post('change-email', [UpdateEmailController::class, 'updateEmail')]->name('updateEmail');
                                                                                     
