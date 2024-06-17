@@ -78,6 +78,28 @@
     transition: background-color .3s ease-in-out;
 }
 
+.error-message {
+    color: #ff0000 !important; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+    border: 1px solid #ff0000; 
+    background-color: #ffe6e6; 
+    padding: 10px; 
+    border-radius: 5px; 
+    text-align: center; 
+}
+
+.success-message {
+    color:chartreuse !important; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+    border: 1px solid chartreuse;
+    background-color:#F9FAF8; 
+    padding: 10px; 
+    border-radius: 5px; 
+    text-align: center; 
+}
+
 .loginWindow {
     width: 500px;
     height: 150px;
@@ -93,7 +115,7 @@
     background-color: #E5E7EB;
 }
 
-.loginWindow p{
+.loginWindow label{
     color: #1F2937;
 }
 
@@ -107,6 +129,12 @@
 .loginWindow input:focus {
     border-color: #3882F6;
     outline: none;
+}
+
+.login-form {
+    display:flex;;
+    flex-direction:column;
+    gap: 8px;
 }
 
 .image {
@@ -127,3 +155,4 @@
 .footer p{
     color: white;
 }
+

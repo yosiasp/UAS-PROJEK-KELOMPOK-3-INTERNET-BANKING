@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('login', function (Blueprint $table) {
-            $table->string('username');
-            $table->string('pin');
+        Schema::create('mutations', function (Blueprint $table) {
+            $table->id();
+            $table->string('accountMutated');
+            $table->date('date');
+            $table->string('account');
+            $table->decimal('amount', 15, 2);
+            $table->string('type');
+            $table->text('news')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('login');
+        Schema::dropIfExists('mutations');
     }
 };

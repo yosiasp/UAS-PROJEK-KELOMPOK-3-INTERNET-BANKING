@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('login', function (Blueprint $table) {
-            $table->string('username');
-            $table->string('pin');
+        Schema::create('balances', function (Blueprint $table) {
+            $table->id();
+            $table->string('username')->unique();
+            $table->string('accountNumber');
+            $table->decimal('balance', 15, 2);
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('login');
+        Schema::dropIfExists('balances');
     }
 };

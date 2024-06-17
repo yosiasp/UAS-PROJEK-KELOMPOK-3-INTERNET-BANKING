@@ -25,7 +25,7 @@ class PinController extends Controller
 
         // Update PIN baru
         $user->pin = Hash::make($request->pinbaru);
-        $user->save();
+        //$user->save();
 
         return back()->with('status', 'PIN berhasil diubah.');
     }

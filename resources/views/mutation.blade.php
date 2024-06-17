@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <title>Home</title>
+    <link rel="stylesheet" href="{{ asset('css/mutation.css') }}">
+    <title>Mutasi Rekening</title>
 </head>
 <body>
     <div class="header">
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
             <li><a href="{{ route('home', ['id' => $account->id]) }}">Home</a></li>
-            <li><a href="{{ url('/customer-service') }}" target="_blank">Costumer Service</a></li>
+            <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
             <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
         </ul>
     </div>
@@ -26,7 +26,7 @@
                         <li><a href="#">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
+                <li><a href="#">Transfer Dana</a></li>
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
@@ -38,11 +38,30 @@
                 </li>
             </ul>
         </div>
-        
+
         <div class="content">
-            <h1>Selamat Datang {{ $account->fullname }}</h1>
-            <p>Silahkan memilih menu di sebelah kiri untuk mengakses fitur-fitur kami.</p>
-            <img src = "{{ asset('img/Home.JPG') }}" width="60%" height="60%">
+            <h1>Mutasi Rekening</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Account Number</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($personalMutations as $mutation)
+                    <tr>
+                        <td>{{ $mutation->date }}</td>
+                        <td>{{ $mutation->account }}</td>
+                        <td>{{ $mutation->amount }}</td>
+                        <td>{{ $mutation->type }}</td>
+                        <td>{{ $mutation->news }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
