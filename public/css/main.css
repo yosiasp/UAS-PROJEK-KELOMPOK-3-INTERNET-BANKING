@@ -78,6 +78,10 @@
     transition: background-color .3s ease-in-out;
 }
 
+.error-message {
+    background-color: crimson;
+}
+
 .loginWindow {
     width: 500px;
     height: 150px;
@@ -133,3 +137,4 @@
 .footer p{
     color: white;
 }
+
