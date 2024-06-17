@@ -15,11 +15,10 @@ class TransferController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        $account = Account::find($request->id);
+        $account = Account::find($id);
         $account->balance -= $request->amount;
         $account->save();
     }
-
 }

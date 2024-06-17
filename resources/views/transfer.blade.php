@@ -22,11 +22,11 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
                     <ul class="sub-menu" id="account-info">
-                        <li><a href="#">Informasi Saldo</a></li>
+                        <li><a href="{{ route('balanceInfo', ['id' => $account->id]) }}">Informasi Saldo</a></li>
                         <li><a href="#">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Transfer Dana</a></li>
+                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
@@ -42,7 +42,7 @@
         <div class="content">
             <h1>Transfer Dana</h1>
 
-            <form class = "transferInfo" method="POST" action="{{ route('transfer.store') }}">
+            <form class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
                 @csrf
                 <label for="account">No rekening</label>
                 <input type="text" id="account" name="account" required>
