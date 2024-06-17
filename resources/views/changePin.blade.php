@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/changePin.css') }}">
     <title>Change PIN</title>
 </head>
 <body>
@@ -17,6 +17,29 @@
     </div>
 
     <div class="main-content">
+        <div class="sidebar">
+            <ul class="menu">
+                <li>
+                    <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
+                    <ul class="sub-menu" id="account-info">
+                        <li><a href="#">Informasi Saldo</a></li>
+                        <li><a href="#">Mutasi Rekening</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
+                <li>
+                    <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
+                    <ul class="sub-menu" id="administration">
+                    <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
+                        <li><a href="#">Ubah Alamat Email</a></li>
+                        <li><a href="#">Ubah Nomor Telepon</a></li>
+                        <li><a href="#">Pembaruan Data Diri</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>    
+
+    <div class="content">
         <h1>Change PIN</h1>
         <form action="{{ route('change-pin') }}" method="post">
             @csrf
@@ -25,6 +48,7 @@
             <input type="password" name="pinbaru" placeholder="Masukkan PIN baru">
             <button type="submit">Change PIN</button>
         </form>
+    </div>
     </div>
 
     <div class="footer">

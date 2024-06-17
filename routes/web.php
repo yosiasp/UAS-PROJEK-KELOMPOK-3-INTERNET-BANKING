@@ -33,8 +33,8 @@ Route::post('/{id}/transfer', [TransferController::class, 'store'])->name('trans
 Route::get('/{id}/mutation', [MutationController::class, 'index'])->name('mutation');
 
 
-Route::get('/{id}/home/change-pin', [PinController::class, 'index'])->name('changePin');
-Route::post('/{id}/home/change-pin', [PinController::class, 'update'])->name('change-pin');
+Route::get('/{id}/change-pin', [PinController::class, 'index'])->name('changePin');
+Route::post('/{id}/change-pin', [PinController::class, 'update'])->name('change-pin');
 
 Route::get('/{id}/balanceInfo', [BalanceInfoController::class, 'index'])->name('balanceInfo');
 
