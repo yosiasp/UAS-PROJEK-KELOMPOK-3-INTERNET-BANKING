@@ -40,7 +40,7 @@
         </div>
 
         <div class="content">
-            <h1>Transfer Dana</h1>
+            <h2>Transfer Dana</h2>
 
             <form class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
                 @csrf

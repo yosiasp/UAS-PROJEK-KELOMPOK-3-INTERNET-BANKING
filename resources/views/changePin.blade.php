@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/changePin.css') }}">
-    <title>Change PIN</title>
+    <title>Ganti PIN</title>
 </head>
 <body>
     <div class="header">
@@ -40,7 +40,7 @@
         </div>    
 
     <div class="content">
-        <h1>Ganti PIN</h1>
+        <h2>Administrasi - Ganti PIN</h2>
         <form class='passwordInput' action="{{ route('change-pin', ['id' => $account->id]) }}" method="post">
             @csrf
             @method('PUT')
