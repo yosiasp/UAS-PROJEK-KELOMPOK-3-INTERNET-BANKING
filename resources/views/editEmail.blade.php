@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', "_", app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '_', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" contenct="width=device-width, intitial-scale-1.0">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}>
-    <tite>change email</title>
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+     <title>Change Email</title>
 </head>
 <body>
     <div class="header">
         <p class="logo">INTERNET BANKING SEJATERA</p>
         <ul>
-            <li><a href="{{ route('home', ['id'=> Auth::user()->id]) }}'>Home</a></li>
-            <li><a href="{{ url('/customer-service') }}" target="_blank">Costumer Service</a></li>
+          <li><a href="{{ route('home', ['id' => Auth::user()->id]) }}">Home</a></li> 
+             <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
             <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
         </ul>
     </div>
@@ -22,13 +22,13 @@
             <li>
                 <a href='#' class ="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
                 <ul class="sub-menu" id="account-info">
-                    <li><a href= '#'>Infomrasi Saldo</a></li>
+                      <li><a href="#">Informasi Saldo</a></li>
                     <li><a href= '#'>Mutasi Rekening</a></li>
                 </ul>
             </li>
             <li><a href="{{ route('transfer', ['id' => Auth::user()->id]) }}">Transfer Dana</a></li>
             <li>
-                <a href='#' class="menu-item" onclick="toggleSubMenu"('administration')">Administrasi</a>
+                <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                 <ul class="sub-menu" id="administration">
                     <li><a href="#">GANTI PIN</a></li>
                     <li><a href="{{ route('changeEMailForm') }}">Ubah Alamat Email</a></li>
@@ -39,7 +39,7 @@
         </ul>
     </div>
         
-    <div class="contenct">
+   <div class="content">
         <h2>Change Email</h2>
 
         @if ($errors->any())
@@ -60,7 +60,7 @@
             </div>
             <div class="form-group">
                 <label for="new_email">New Email:</label>
-                <input type="email+ id="new_email" name="new_email" required>
+                  <input type="email" id="new_email" name="new_email" required>
             </div>
             <button type="submit">Update Email</button>
         </form>
@@ -68,7 +68,7 @@
 </div>
 
 <div class="footer">
-    <p>Copyright &#169 2024 Bank Sejahtera (Persero) tbk</p>
+   <p>Copyright &#169; 2024 Bank Sejahtera (Persero) tbk</p>
 </div>
 
 <script>
