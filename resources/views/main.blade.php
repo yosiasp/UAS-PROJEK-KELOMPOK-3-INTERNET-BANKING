@@ -20,6 +20,9 @@
                 @if (session('error'))
                     <p class="error-message">{{ session('error') }}</p>
                 @endif
+                @if (session('success'))
+                    <p class="success-message">{{ session('success') }}</p>
+                @endif
                 <h1>Login ke Internet Banking</h1>
                 <div class="loginWindow">
                     <form action="{{ route('login') }}" method="POST" class="login-form">
