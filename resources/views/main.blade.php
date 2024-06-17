@@ -17,6 +17,9 @@
 
         <div class="hero">
             <div class="content">
+                @if (session('error'))
+                    <p class="error-message">{{ session('error') }}</p>
+                @endif
                 <h1>Login ke Internet Banking</h1>
                 <div class="loginWindow">
                     <form action="{{ route('login') }}" method="POST" class="login-form">
