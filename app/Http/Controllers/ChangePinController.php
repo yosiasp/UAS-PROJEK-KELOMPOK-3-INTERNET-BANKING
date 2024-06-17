@@ -18,14 +18,21 @@ class ChangePinController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'pinlama' => 'required',
-            'pinbaru' => 'required|confirmed|min:6|max:6',
+            'pinLama' => 'required|string|size:6|',
+            'pinBaru' => 'required|string|size:6|confirmed',
         ]);
 
+        $pin = $request->input('pinBaru');
         $account = Account::find($id);
-        $account->pin = Hash::make($request->pinbaru);
-        $account->save();
 
-        return redirect()->route('home')->with('status', 'PIN berhasil diubah.');
+        if ($account && Hash::check($pin, $account->pin)) {
+            // Pin lama benar
+            $account->pin = Hash::make($request->pinbaru);
+            $account->save();
+            return redirect()->route('home')->with('status', 'PIN berhasil diubah.');
+        } else {
+            // Pin lama salah
+            return redirect()->route('home')->with('error', 'PIN lama salah');
+        }
     }
 }
