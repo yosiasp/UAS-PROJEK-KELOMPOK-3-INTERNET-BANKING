@@ -42,9 +42,8 @@
         <div class="content">
             <h1>Transfer Dana</h1>
 
-            <form class = "transferInfo" method="POST" action="/transfer">
+            <form class = "transferInfo" method="POST" action="{{ route('transfer.store') }}">
                 @csrf
-
                 <label for="account">No rekening</label>
                 <input type="text" id="account" name="account" required>
 

@@ -30,7 +30,7 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
-                        <li><a href="#">Ganti PIN</a></li>
+                    <li><a href="#">Ganti PIN</a></li>
                         <li><a href="#">Ubah Alamat Email</a></li>
                         <li><a href="#">Ubah Nomor Telepon</a></li>
                         <li><a href="#">Pembaruan Data Diri</a></li>
@@ -42,7 +42,7 @@
         <div class="content">
             <h1>Selamat Datang {{ $account->fullname }}</h1>
             <p>Silahkan memilih menu di sebelah kiri untuk mengakses fitur-fitur kami.</p>
-            <img src = "{{ asset('img/Home.JPG') }}" width="60%" height="60%">
+            <img src="{{ asset('img/Home.JPG') }}" width="60%" height="60%">
         </div>
     </div>
 
@@ -62,3 +62,4 @@
     </script>
 </body>
 </html>
+

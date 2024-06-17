@@ -26,8 +26,10 @@ Route::get('/syarat-ketentuan', function () {
 Route::get('/{id}/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/{id}/transfer', [TransferController::class, 'index'])->name('transfer');
+Route::post('/{id}/transfer', [TransferController::class, 'store'])->name('transfer.store');
 
 Route::get('/{id}/mutation', [MutationController::class, 'index'])->name('mutation');
 
 
-
+Route::get('/{id}/home/change-pin', [PinController::class, 'index'])->name('changePin');
+Route::post('/{id}/home/change-pin', [PinController::class, 'update'])->name('change-pin');

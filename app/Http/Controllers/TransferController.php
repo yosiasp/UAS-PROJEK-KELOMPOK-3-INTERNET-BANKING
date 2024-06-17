@@ -13,4 +13,13 @@ class TransferController extends Controller
 
         return view("transfer",  compact('account'));
     }
+
+
+    public function store(Request $request)
+    {
+        $account = Account::find($request->id);
+        $account->balance -= $request->amount;
+        $account->save();
+    }
+
 }
