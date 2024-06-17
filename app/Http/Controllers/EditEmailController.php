@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-Use Illumintate\Support\Facades\Hash;
+use Illumintate\Support\Facades\Hash;
 use App\Models\User;
 
 class EditEmailController extends Controller
