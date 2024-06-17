@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PinController;
+use App\Http\Controllers\ChangePinController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\MutationController;
@@ -33,8 +33,8 @@ Route::post('/{id}/transfer', [TransferController::class, 'store'])->name('trans
 Route::get('/{id}/mutation', [MutationController::class, 'index'])->name('mutation');
 
 
-Route::get('/{id}/change-pin', [PinController::class, 'index'])->name('changePin');
-Route::post('/{id}/change-pin', [PinController::class, 'update'])->name('change-pin');
+Route::get('/{id}/change-pin', [ChangePinController::class, 'index'])->name('changePin');
+Route::post('/{id}/change-pin', [ChangePinController::class, 'update'])->name('change-pin');
 
 Route::get('/{id}/balanceInfo', [BalanceInfoController::class, 'index'])->name('balanceInfo');
 

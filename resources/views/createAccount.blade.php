@@ -45,7 +45,7 @@
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
 
-                <label for="pin">PIN:</label>
+                <label for="pin">PIN (6 Angka):</label>
                 <div class="password-wrapper">
                     <input type="password" id="pin" name="pin" required>
                     <span class="toggle-password" onmousedown="showPassword('pin')" onmouseup="hidePassword('pin')" onmouseout="hidePassword('pin')">👁️</span>
