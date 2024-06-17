@@ -46,7 +46,7 @@
             @method('PUT')
             <input type="password" name="pinLama" placeholder="Masukkan PIN Lama Anda Saat Ini">
             <input type="password" name="pinBaru" placeholder="Masukkan PIN Baru (6 Angka)">
-            <input type="password" name="konfirmasiPinBaru" placeholder="Konfirmasi Ulang PIN Baru">
+            <input type="password" name="pinBaru_confirmation" placeholder="Konfirmasi Ulang PIN Baru">
             <button type="submit">Ganti PIN</button>
         </form>
     </div>
