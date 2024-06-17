@@ -10,14 +10,16 @@
     <div class="header">
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
-            <li><a href="{{ url('/home') }}">Home</a></li>
-            <li><a href="{{ url('/costumer-service') }}">Costumer Service</a></a></li>
+            <li><a href="{{ url('/') }}">Beranda</a></li>
+            <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></a></li>
         </ul>
     </div>
+
     <div class="hero">
         <div class="content">
             <h1>Pendaftaran Akun Baru</h1>
-            <form class="create-account-form">
+            <form action="{{ url('/create-account') }}" method="POST" class="create-account-form" onsubmit="return validateTermsForm()">
+                @csrf
                 <label for="fullname">Nama Lengkap:</label>
                 <input type="text" id="fullname" name="fullname" required>
 
@@ -35,7 +37,7 @@
                 <input type="text" id="address" name="address" required>
 
                 <label for="phone">Nomor Telepon:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}" required>
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -44,14 +46,15 @@
                 <input type="text" id="username" name="username" required>
 
                 <label for="pin">PIN:</label>
-                <input type="password" id="pin" name="pin" required>
+                <div class="password-wrapper">
+                    <input type="password" id="pin" name="pin" required>
+                    <span class="toggle-password" onmousedown="showPassword('pin')" onmouseup="hidePassword('pin')" onmouseout="hidePassword('pin')">👁️</span>
+                </div>
 
                 <label for="confirm-pin">Konfirmasi PIN:</label>
-                <input type="password" id="confirm-pin" name="confirm-pin" required>
-
-                <div class="show-password">
-                    <input type="checkbox" id="show-password" onclick="viewPassword()">
-                    <label for="show-password">Lihat Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="pin_confirmation" name="pin_confirmation" required>
+                    <span class="toggle-password" onmousedown="showPassword('pin_confirmation')" onmouseup="hidePassword('pin_confirmation')" onmouseout="hidePassword('pin_confirmation')">👁️</span>
                 </div>
 
                 <div class="terms-conditions">
@@ -68,16 +71,12 @@
     </div>
 
     <script>
-        function viewPassword() {
-            var pin = document.getElementById('pin');
-            var confirmPin = document.getElementById('confirm-pin');
-            if (pin.type === 'password' && confirmPin.type === 'password') {
-                pin.type = 'text';
-                confirmPin.type = 'text';
-            } else {
-                pin.type = 'password';
-                confirmPin.type = 'password';
-            }
+        function showPassword(id) {
+            document.getElementById(id).type = 'text';
+        }
+
+        function hidePassword(id) {
+            document.getElementById(id).type = 'password';
         }
 
         function validateTermsForm() {

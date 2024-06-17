@@ -4,60 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/transfer.css') }}">
-    <title>Internet Banking - Bank Sejahtera</title>
+    <title>Transfer Dana</title>
 </head>
 <body>
     <div class="header">
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
-            <li><a href="{{ url('/home') }}">Home</a></li>
-            <li><a href="{{ url('/customer-service') }}">Customer Service</a></li>
+            <li><a href="{{ route('home', ['id' => $account->id]) }}">Home</a></li>
+            <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
+            <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
         </ul>
     </div>
 
-    <div class="content">
-        <h1>Transfer Funds</h1>
+    <div class="main-content">
+        <div class="sidebar">
+            <ul class="menu">
+                <li>
+                    <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
+                    <ul class="sub-menu" id="account-info">
+                        <li><a href="#">Informasi Saldo</a></li>
+                        <li><a href="#">Mutasi Rekening</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Transfer Dana</a></li>
+                <li>
+                    <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
+                    <ul class="sub-menu" id="administration">
+                        <li><a href="#">Ganti PIN</a></li>
+                        <li><a href="#">Ubah Alamat Email</a></li>
+                        <li><a href="#">Ubah Nomor Telepon</a></li>
+                        <li><a href="#">Pembaruan Data Diri</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
-        <form method="POST" action="/transfer">
-            @csrf
+        <div class="content">
+            <h1>Transfer Dana</h1>
 
-            <label for="account">Account Number</label>
-            <input type="text" id="account" name="account" required>
+            <form class = "transferInfo" method="POST" action="/transfer">
+                @csrf
 
-            <label for="amount">Amount</label>
-            <input type="number" id="amount" name="amount" required>
+                <label for="account">No rekening</label>
+                <input type="text" id="account" name="account" required>
 
-            <label for="description">Description</label>
-            <input type="text" id="description" name="description">
+                <label for="amount">Jumlah</label>
+                <input type="number" id="amount" name="amount" required>
 
-            <input type="submit" value="Transfer">
-        </form>
+                <label for="description">Berita</label>
+                <input type="text" id="description" name="description">
 
-        <h2>Transfer History</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Account Number</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($transfers as $transfer)
-                <tr>
-                    <td>{{ $transfer->date }}</td>
-                    <td>{{ $transfer->account }}</td>
-                    <td>{{ $transfer->amount }}</td>
-                    <td>{{ $transfer->description }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                <input type="submit" value="Transfer">
+            </form>
+        </div>
     </div>
 
     <div class="footer">
         <p>&#169; 2024 Bank Sejahtera (Persero) tbk</p>
     </div>
+
+    <script>
+        function toggleSubMenu(id) {
+            var subMenu = document.getElementById(id);
+            if (subMenu.style.display === "block") {
+                subMenu.style.display = "none";
+            } else {
+                subMenu.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>

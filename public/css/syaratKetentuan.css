@@ -74,6 +74,7 @@ body {
 .terms-content {
     display: flex;
     flex-direction: column;
+    text-align: justify;
     gap: 15px;
 }
 
