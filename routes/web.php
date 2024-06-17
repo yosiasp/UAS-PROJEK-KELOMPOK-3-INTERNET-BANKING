@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\MutationController;
 use App\Http\Controllers\BalanceInfoController;
-// use App\Htt\Controllers|UpdateEmailController;
+// use App\Http\Controllers|UpdateEmailController;
 
 Route::get('/customer-service', function () {
     return view('customerService');
