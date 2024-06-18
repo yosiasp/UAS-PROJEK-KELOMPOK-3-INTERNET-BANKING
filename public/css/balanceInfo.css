@@ -1,3 +1,4 @@
+
 * {
     font-family: 'roboto', sans-serif;
     margin: 0;
@@ -86,32 +87,39 @@
 .content {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 12px;
     padding: 20px;
     flex: 1;
 }
 
-.filter-form {
-    display: flex;
-    flex-direction: row;
-    gap: 6px;
+.content h2 {
+    padding-left: 10px;
 }
 
-.content table{
+.table {
+    display: table;
     width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+    border-collapse:collapse;
 }
 
-.content th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+.column1, .column2 {
+    display: table-cell;
+    padding: 10px;
 }
 
-.content th {
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: left;
+.row1 {
+    background-color: #d3d3d3; 
+    color: #1a3d5d; 
+    font-weight: bold;
+    padding: 3px 0;
+    padding-left: 7px;
+}
+
+.row2 {
+    background-color: #b0b0b0; 
+    color: #1a3d5d; 
+    padding: 6px 0;
+    padding-left: 7px;
 }
 
 .footer {

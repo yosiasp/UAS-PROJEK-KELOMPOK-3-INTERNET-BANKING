@@ -22,15 +22,15 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
                     <ul class="sub-menu" id="account-info">
-                        <li><a href="#">Informasi Saldo</a></li>
-                        <li><a href="#">Mutasi Rekening</a></li>
+                        <li><a href="{{ route('balanceInfo', ['id' => $account->id]) }}">Informasi Saldo</a></li>
+                        <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Transfer Dana</a></li>
+                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
-                        <li><a href="#">Ganti PIN</a></li>
+                        <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
                         <li><a href="#">Ubah Alamat Email</a></li>
                         <li><a href="#">Ubah Nomor Telepon</a></li>
                         <li><a href="#">Pembaruan Data Diri</a></li>
@@ -40,28 +40,47 @@
         </div>
 
         <div class="content">
-            <h1>Mutasi Rekening</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Account Number</th>
-                        <th>Amount</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($personalMutations as $mutation)
-                    <tr>
-                        <td>{{ $mutation->date }}</td>
-                        <td>{{ $mutation->account }}</td>
-                        <td>{{ $mutation->amount }}</td>
-                        <td>{{ $mutation->type }}</td>
-                        <td>{{ $mutation->news }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <h2>Informasi Rekening - Mutasi Rekening</h2>
+
+            <form method="GET" action="{{ route('mutation', $account->id) }}" class="filter-form">
+                <label for="sort_order">Urutan:</label>
+                    <select name="sort_order" id="sort_order">
+                    <option value="asc" {{ $sortOrder == 'asc' ? 'selected' : '' }}>Lama ke Baru</option>    
+                    <option value="desc" {{ $sortOrder == 'desc' ? 'selected' : '' }}>Baru ke Lama</option>
+                </select>
+            <label for="filter_type">Tipe:</label>
+                <select name="filter_type" id="filter_type">
+                    <option value="all" {{ $filterType == 'all' ? 'selected' : '' }}>Semua</option>
+                    <option value="in" {{ $filterType == 'in' ? 'selected' : '' }}>Uang Masuk</option>
+                    <option value="out" {{ $filterType == 'out' ? 'selected' : '' }}>Uang Keluar</option>
+                </select>
+                <button type="submit">Terapkan</button>
+            </form>
+
+            @if($personalMutations->isEmpty())
+                <p>Tidak ada mutasi</p>
+            @else
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Jumlah</th></th>
+                            <th>Tipe</th>
+                            <th>Deksripsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($personalMutations as $mutation)
+                        <tr>
+                            <td>{{ $mutation->date }}</td>
+                            <td>Rp{{ $mutation->amount }}</td>
+                            <td>{{ $mutation->type }}</td>
+                            <td>{{ $mutation->news }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
         </div>
     </div>
 

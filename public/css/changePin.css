@@ -1,3 +1,4 @@
+
 * {
     font-family: 'roboto', sans-serif;
     margin: 0;
@@ -86,32 +87,31 @@
 .content {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 12px;
     padding: 20px;
     flex: 1;
 }
 
-.filter-form {
-    display: flex;
-    flex-direction: row;
-    gap: 6px;
+.error-message {
+    color: #ff0000 !important; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+    border: 1px solid #ff0000; 
+    background-color: #ffe6e6; 
+    padding: 10px; 
+    border-radius: 5px; 
+    text-align: center; 
 }
-
-.content table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-.content th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-.content th {
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: left;
+  
+.status-message {
+    color:gray !important; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+    border: 1px solid gray;
+    background-color:#F9FAF8; 
+    padding: 10px; 
+    border-radius: 5px; 
+    text-align: center; 
 }
 
 .footer {
@@ -129,4 +129,30 @@
 
 .logOut {
     background-color:cornflowerblue
+}
+
+.passwordInput {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.passwordInput input {
+    width: 480px;
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+.passwordInput input:focus {
+    border-color: #3882F6;
+    outline: none;
+  }
+
+.passwordInput button {
+    width: 495px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
