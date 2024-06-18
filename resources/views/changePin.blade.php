@@ -41,9 +41,9 @@
 
     <div class="content">
         <h2>Administrasi - Ganti PIN</h2>
-        <form class='passwordInput' action="{{ route('change-pin', ['id' => $account->id]) }}" method="post">
+        <form class='passwordInput' action="{{ route('change-pin', ['id' => $account->id]) }}" method="POST">
             @csrf
-            @method('PUT')
+            @method('PATCH')
             <input type="password" name="pinLama" placeholder="Masukkan PIN Lama Anda Saat Ini">
             <input type="password" name="pinBaru" placeholder="Masukkan PIN Baru (6 Angka)">
             <input type="password" name="pinBaru_confirmation" placeholder="Konfirmasi Ulang PIN Baru">

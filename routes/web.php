@@ -32,12 +32,10 @@ Route::post('/{id}/transfer', [TransferController::class, 'store'])->name('trans
 
 Route::get('/{id}/mutation', [MutationController::class, 'index'])->name('mutation');
 
-
 Route::get('/{id}/change-pin', [ChangePinController::class, 'index'])->name('changePin');
-Route::post('/{id}/change-pin', [ChangePinController::class, 'update'])->name('change-pin');
+Route::patch('/{id}/change-pin', [ChangePinController::class, 'updatePin'])->name('change-pin');
 
 Route::get('/{id}/balanceInfo', [BalanceInfoController::class, 'index'])->name('balanceInfo');
 
-// Route::get('/change-email', [UpdateEmailController::class, 'showChangeEmailForm'])->name('changeEmailForm);
-// Route::post('change-email', [UpdateEmailController::class, 'updateEmail')]->name('updateEmail');
-                                                                                    
+Route::get('/{id}/change-phone', [ChangePhoneController::class, 'index'])->name('changePhone');
+Route::patch('/{id}/change-phone', [ChangePhoneController::class, 'updatePhone'])->name('change-phone');

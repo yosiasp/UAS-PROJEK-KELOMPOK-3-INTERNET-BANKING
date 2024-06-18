@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Account;
-use App\Models\Balance;
+
 
 class ChangePinController extends Controller
 {
@@ -15,24 +15,23 @@ class ChangePinController extends Controller
         return view("changePin", compact('account'));
     }
 
-    public function update(Request $request, $id)
+    public function updatePin(Request $request, $id)
     {
         $request->validate([
-            'pinLama' => 'required|string|size:6|',
-            'pinBaru' => 'required|string|size:6|confirmed',
+            'pinLama' => 'required',
+            'pinBaru' => 'required|digits:6|different:pinLama',
+            'pinBaru_confirmation' => 'required|same:pinBaru',
         ]);
 
-        $pin = $request->input('pinBaru');
         $account = Account::find($id);
 
-        if ($account && Hash::check($pin, $account->pin)) {
-            // Pin lama benar
-            $account->pin = Hash::make($request->pinbaru);
-            $account->save();
-            return redirect()->route('home')->with('status', 'PIN berhasil diubah.');
-        } else {
-            // Pin lama salah
-            return redirect()->route('home')->with('error', 'PIN lama salah');
+        if (!Hash::check($request->pinLama, $account->pin)) {
+            return redirect()->back()->withErrors(['pinLama' => 'PIN lama tidak sesuai']);
         }
+
+        $account->setAttribute('pin', Hash::make($request->pinBaru));
+        $account->save();
+
+        return redirect()->back()->with('success', 'PIN berhasil diubah');
     }
 }

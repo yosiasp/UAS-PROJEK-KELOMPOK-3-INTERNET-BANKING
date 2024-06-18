@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <title>Home</title>
+    <link rel="stylesheet" href="{{ asset('css/changePin.css') }}">
+    <title>Ganti Nomor Telepon</title>
 </head>
 <body>
     <div class="header">
@@ -30,20 +30,24 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
-                    
-                    <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
+                        <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
                         <li><a href="#">Ubah Alamat Email</a></li>
                         <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
                         <li><a href="#">Pembaruan Data Diri</a></li>
                     </ul>
                 </li>
             </ul>
-        </div>
-        
+        </div>    
+
         <div class="content">
-            <h1>Selamat Datang {{ $account->fullname }}</h1>
-            <p>Silahkan memilih menu di sebelah kiri untuk mengakses fitur-fitur kami.</p>
-            <img src="{{ asset('img/Home.JPG') }}" width="60%" height="60%">
+            <h2>Administrasi - Ubah Nomor Telepon</h2>
+            <form class='passwordInput' action="{{ route('change-phone', ['id' => $account->id]) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <input type="text" name="phoneLama" placeholder="Masukkan Nomor Telepon Lama Anda Saat Ini">
+                <input type="text" name="phoneBaru" placeholder="Masukkan Nomor Telepon Baru">
+                <button type="submit">Ubah Nomor Telepon</button>
+            </form>
         </div>
     </div>
 
@@ -63,4 +67,3 @@
     </script>
 </body>
 </html>
-
