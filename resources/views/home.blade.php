@@ -12,10 +12,11 @@
         <ul>
             <li><a href="{{ route('home', ['id' => $account->id]) }}">Home</a></li>
             <li><a href="{{ url('/customer-service') }}" target="_blank">Costumer Service</a></li>
-            <form action="{{ route('logout') }}" method="POST">
+            <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
+            <!-- <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="logOut">Log Out</button>
-            </form>            
+            </form>             -->
         </ul>
     </div>
 

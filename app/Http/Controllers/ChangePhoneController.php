@@ -7,8 +7,10 @@ use App\Models\Account;
 
 class ChangePhoneController extends Controller
 {
-    public function index()
+    public function index($id)
     {
+        $account = Account::find($id);
+
         return view("changePhone", compact('account'));
     }
 
