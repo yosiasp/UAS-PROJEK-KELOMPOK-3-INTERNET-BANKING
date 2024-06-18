@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class MutationController extends Controller
 {
-    public function index($id) 
+    public function index(Request $request, $id) 
     {
         $account = Account::find($id);
 
@@ -18,9 +18,25 @@ class MutationController extends Controller
 
         $accountNumber = $balanceInfo->accountNumber;
 
-        // Menampilkan hanya mutasi untuk nomor rekening terkait
-        $personalMutations = Mutation::where('accountMutated', $accountNumber)->get();
+        // Request sorting dan filter dengan nilai defaultnya
+        $sortOrder = $request->get('sort_order', 'asc'); 
+        $filterType = $request->get('filter_type', 'all'); 
 
-        return view("mutation", compact('personalMutations', 'account'));
+        // Menampilkan hanya mutasi untuk nomor rekening terkait
+        $query = Mutation::where('accountMutated', $accountNumber);
+
+        // Filtrasi tipe mutasi
+        if ($filterType == 'in') {
+            $query->where('type', 'uang masuk');
+        } elseif ($filterType == 'out') {
+            $query->where('type', 'uang keluar');
+        }
+
+        $personalMutations = $query->get();
+        if ($sortOrder == 'desc') {
+            $personalMutations = $personalMutations->reverse();
+        } 
+        
+        return view('mutation', compact('personalMutations', 'account', 'sortOrder', 'filterType'));
     }
 }
