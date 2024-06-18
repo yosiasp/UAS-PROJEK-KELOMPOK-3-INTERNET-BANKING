@@ -44,9 +44,17 @@
         </div>
         
         <div class="content">
-            <h1>Selamat Datang {{ $account->fullname }}</h1>
+            <div class="dateTime">
+                <p>Tanggal: {{ $currentDate }}</p> 
+                <p>Jam: {{ $currentTime }}</p> 
+            </div>
+            <h1>Halo {{ $account->fullname }}, Selamat Datang Di Internet Banking Bank Sejahtera</h1>
             <p>Silahkan memilih menu di sebelah kiri untuk mengakses fitur-fitur kami.</p>
             <img src="{{ asset('img/Home.JPG') }}" width="60%" height="60%">
+            <div class="contactInfo">
+                <h3>UNTUK INFO LEBIH LANJUT</h3>
+                <h3>HUBUNGI KAMI DI 123-456-7890</h3>
+            </div>
         </div>
     </div>
 
