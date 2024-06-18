@@ -41,6 +41,22 @@
 
         <div class="content">
             <h2>Informasi Rekening - Mutasi Rekening</h2>
+
+            <form method="GET" action="{{ route('mutation', $account->id) }}" class="filter-form">
+                <label for="sort_order">Urutan:</label>
+                    <select name="sort_order" id="sort_order">
+                    <option value="asc" {{ $sortOrder == 'asc' ? 'selected' : '' }}>Lama ke Baru</option>    
+                    <option value="desc" {{ $sortOrder == 'desc' ? 'selected' : '' }}>Baru ke Lama</option>
+                </select>
+            <label for="filter_type">Tipe:</label>
+                <select name="filter_type" id="filter_type">
+                    <option value="all" {{ $filterType == 'all' ? 'selected' : '' }}>Semua</option>
+                    <option value="in" {{ $filterType == 'in' ? 'selected' : '' }}>Uang Masuk</option>
+                    <option value="out" {{ $filterType == 'out' ? 'selected' : '' }}>Uang Keluar</option>
+                </select>
+                <button type="submit">Terapkan</button>
+            </form>
+
             @if($personalMutations->isEmpty())
                 <p>Tidak ada mutasi</p>
             @else
