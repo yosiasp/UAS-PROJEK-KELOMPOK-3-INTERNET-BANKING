@@ -14,31 +14,7 @@
                 <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></a></li>
             </ul>
         </div>
-
-        <div class="hero">
-            <div class="content">
-                @if (session('error'))
-                    <p class="error-message">{{ session('error') }}</p>
-                @endif
-                @if (session('success'))
-                    <p class="success-message">{{ session('success') }}</p>
-                @endif
-                <h1>Login ke Internet Banking</h1>
-                <div class="loginWindow">
-                    <form action="{{ route('login') }}" method="POST" class="login-form">
-                        @csrf
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required>
-                        @error('username')
-                            <p>{{ $message }}</p>
-                        @enderror
-                        <label for="pin">PIN:</label>
-                        <input type="password" id="pin" name="pin" required>
-                        @error('pin')
-                            <p>{{ $message }}</p>
-                        @enderror
-                        <button>Masuk</button>
-                    </form>
+                    <button onclick="location.href='{{ url('/login') }}'" > Login</button>
                     <button class ="newAccount" onclick="location.href='{{ url('/create-account') }}'" >Buat akun</button>
                 </div>
             </div>
