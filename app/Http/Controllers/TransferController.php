@@ -65,7 +65,6 @@ class TransferController extends Controller
         $senderMutation->news = 'Transfer ke rekening ' . $accountNumReceiver .' '. $receiverName .':'. $news;
         $senderMutation->save();
 
-
         // Riwayat transaksi untuk penerima
         $receiverMutation = new Mutation;
         $receiverMutation->accountMutated = $accountNumReceiver;
