@@ -40,4 +40,4 @@ Route::get('/{id}/balanceInfo', [BalanceInfoController::class, 'index'])->name('
 Route::get('/{id}/change-phone', [ChangePhoneController::class, 'index'])->name('changePhone');
 Route::patch('/{id}/change-phone', [ChangePhoneController::class, 'updatePhone'])->name('change-phone');
 
-Route::post('/logout', LogOutController::class)->name('logout');
+// Route::post('/logout', LogOutController::class)->name('logout');
