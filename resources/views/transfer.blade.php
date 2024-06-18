@@ -23,7 +23,7 @@
                     <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
                     <ul class="sub-menu" id="account-info">
                         <li><a href="{{ route('balanceInfo', ['id' => $account->id]) }}">Informasi Saldo</a></li>
-                        <li><a href="#">Mutasi Rekening</a></li>
+                        <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
@@ -40,8 +40,13 @@
         </div>
 
         <div class="content">
+            @if (session('error'))
+                <p class="error-message">{{ session('error') }}</p>
+            @endif
+            @if (session('status'))
+                <p class="status-message">{{ session('status') }}</p>
+            @endif
             <h2>Transfer Dana</h2>
-
             <form class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
                 @csrf
                 <label for="account">No rekening</label>

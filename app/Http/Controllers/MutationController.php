@@ -16,7 +16,7 @@ class MutationController extends Controller
         $username = $account->username;
         $balanceInfo = Balance::where('username', $username)->first();
 
-        $accountNumber = $balanceInfo->accountMutated;
+        $accountNumber = $balanceInfo->accountNumber;
 
         // Menampilkan hanya mutasi untuk nomor rekening terkait
         $personalMutations = Mutation::where('accountMutated', $accountNumber)->get();
