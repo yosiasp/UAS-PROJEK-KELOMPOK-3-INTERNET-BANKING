@@ -40,6 +40,12 @@
         </div>    
 
     <div class="content">
+        @if (session('error'))
+            <p class="error-message">{{ session('error') }}</p>
+        @endif
+        @if (session('status'))
+            <p class="status-message">{{ session('status') }}</p>
+        @endif
         <h2>Administrasi - Ganti PIN</h2>
         <form class='passwordInput' action="{{ route('change-pin', ['id' => $account->id]) }}" method="POST">
             @csrf
