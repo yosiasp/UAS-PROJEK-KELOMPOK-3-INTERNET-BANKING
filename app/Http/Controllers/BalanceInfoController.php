@@ -12,10 +12,9 @@ class BalanceInfoController extends Controller
     {
         $account = Account::find($id);
         
-  
-            $username = $account->username;
-            $balanceInfo = Balance::where('username', $username)->first();
+        $username = $account->username;
+        $balanceInfo = Balance::where('username', $username)->first();
             
-            return view("balanceInfo", compact('account', 'balanceInfo'));
+        return view("balanceInfo", compact('account', 'balanceInfo'));
     }
 }

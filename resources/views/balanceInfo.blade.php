@@ -38,17 +38,20 @@
                 </li>
             </ul>
         </div>
-        
         <div class="content">
-            <div class="column1">
-                <P class="row1">No Rekening</P>
-                <p class="row2">{{ $balanceInfo->accountNumber }}</p>
-            </div>
-            <div class="column2">
-                <P class="row1">Saldo Efektif</P>
-                <p class="row2">{{ $balanceInfo->balance }}</p>   
+            <h2>Informasi Rekening - Informasi Saldo</h2>
+            <div class="table">
+                <div class="column1">
+                    <P class="row1">No Rekening</P>
+                    <p class="row2">{{ $balanceInfo->accountNumber }}</p>
+                </div>
+                <div class="column2">
+                    <P class="row1">Saldo Efektif</P>
+                    <p class="row2">{{ $balanceInfo->balance }}</p>   
+                </div>
             </div>
         </div>
+        
     </div>
 
     <div class="footer">

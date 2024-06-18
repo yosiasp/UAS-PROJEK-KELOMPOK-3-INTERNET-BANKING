@@ -22,8 +22,8 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
                     <ul class="sub-menu" id="account-info">
-                        <li><a href="#">Informasi Saldo</a></li>
-                        <li><a href="#">Mutasi Rekening</a></li>
+                        <li><a href="{{ route('balanceInfo', ['id' => $account->id]) }}">Informasi Saldo</a></li>
+                        <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Transfer Dana</a></li>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="content">
-            <h1>Mutasi Rekening</h1>
+            <h2>Informasi Rekening - Mutasi Rekening</h2>
             <table>
                 <thead>
                     <tr>
