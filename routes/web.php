@@ -9,7 +9,8 @@ use App\Http\Controllers\TransferController;
 use App\Http\Controllers\MutationController;
 use App\Http\Controllers\BalanceInfoController;
 use App\Http\Controllers\ChangePhoneController;
-// use App\Http\Controllers|UpdateEmailController;
+use App\Http\Controllers\LogOutController;
+// use App\Http\Controllers\UpdateEmailController;
 
 Route::get('/customer-service', function () {
     return view('customerService');
@@ -41,4 +42,4 @@ Route::get('/{id}/balanceInfo', [BalanceInfoController::class, 'index'])->name('
 Route::get('/{id}/change-phone', [ChangePhoneController::class, 'index'])->name('changePhone');
 Route::patch('/{id}/change-phone', [ChangePhoneController::class, 'updatePhone'])->name('change-phone');
 
-// Route::post('/logout', LogOutController::class)->name('logout');
+Route::post('/logout', LogOutController::class)->name('logout');
