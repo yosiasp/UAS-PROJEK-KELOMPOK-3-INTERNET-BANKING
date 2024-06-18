@@ -91,6 +91,23 @@
     flex: 1;
 }
 
+.content table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.content th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.content th {
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: left;
+}
+
 .footer {
     padding-top: 35px;
     padding-bottom: 35px;
