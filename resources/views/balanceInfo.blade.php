@@ -23,7 +23,7 @@
                     <a href="#" class="menu-item" onclick="toggleSubMenu('account-info')">Informasi Rekening</a>
                     <ul class="sub-menu" id="account-info">
                         <li><a href="{{ route('balanceInfo', ['id' => $account->id]) }}">Informasi Saldo</a></li>
-                        <li><a href="#">Mutasi Rekening</a></li>
+                        <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="column2">
                     <P class="row1">Saldo Efektif</P>
-                    <p class="row2">{{ $balanceInfo->balance }}</p>   
+                    <p class="row2">Rp{{ $balanceInfo->balance }}</p>   
                 </div>
             </div>
         </div>

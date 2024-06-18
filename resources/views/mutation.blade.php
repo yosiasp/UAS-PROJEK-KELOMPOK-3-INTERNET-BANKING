@@ -55,7 +55,7 @@
                     <tr>
                         <td>{{ $mutation->date }}</td>
                         <td>{{ $mutation->account }}</td>
-                        <td>{{ $mutation->amount }}</td>
+                        <td>Rp{{ $mutation->amount }}</td>
                         <td>{{ $mutation->type }}</td>
                         <td>{{ $mutation->news }}</td>
                     </tr>
