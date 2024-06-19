@@ -11,7 +11,8 @@ use App\Http\Controllers\BalanceInfoController;
 use App\Http\Controllers\ChangePhoneController;
 use App\Http\Controllers\LogInController;
 use App\Http\Controllers\LogOutController;
-// use App\Http\Controllers\UpdateEmailController;
+use App\Http\Controllers\ChangeEmailController;
+
 
 Route::get('/', [MainController::class, 'index'])->name('main');
 
@@ -45,6 +46,9 @@ Route::middleware(['guest'])->group(
 
         Route::get('/{id}/change-phone', [ChangePhoneController::class, 'index'])->name('changePhone');
         Route::patch('/{id}/change-phone', [ChangePhoneController::class, 'updatePhone'])->name('change-phone');
+
+        Route::get('/{id}/change-email', [ChangeEmailController::class, 'index'])->name('changeEmail');
+        Route::patch('/{id}/change-email', [ChangeEmailController::class, 'updateEmail'])->name('change-email');
 
         Route::post('/logout', LogOutController::class)->name('logout');
     }
