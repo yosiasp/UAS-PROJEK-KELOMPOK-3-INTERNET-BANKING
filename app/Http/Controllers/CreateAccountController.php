@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Account;   
 use App\Models\Balance;   
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class CreateAccountController extends Controller
 {
@@ -16,8 +17,8 @@ class CreateAccountController extends Controller
     
     public function store(Request $request)
     {
-        // Validasi
-        $request->validate([
+        // Validasi 
+        $validator = Validator::make($request->all(), [
             'fullname' => 'required|string|max:255',
             'dob' => 'required|date',
             'gender' => 'required|string|in:Laki-laki,Perempuan',
@@ -28,6 +29,11 @@ class CreateAccountController extends Controller
             'pin' => 'required|string|size:6|confirmed', 
         ]);
         
+        // Jika validasi gagal
+        if ($validator->fails()) {
+            return redirect()->route('accounts')->with('error', 'Pembuatan akun gagal');
+        }
+
         $accounts = new Account;
         $accounts->fullname = $request->fullname;
         $accounts->dob = $request->dob;
@@ -48,6 +54,6 @@ class CreateAccountController extends Controller
         $balances->balance = 0;
         $balances->save();
 
-        return redirect()->route('main')->with('success', 'Akun berhasil dibuat.');
+        return redirect()->route('main')->with('success', 'Akun berhasil dibuat');
     }
 }

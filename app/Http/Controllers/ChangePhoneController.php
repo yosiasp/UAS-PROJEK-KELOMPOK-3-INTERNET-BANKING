@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Account;
 
 class ChangePhoneController extends Controller
@@ -16,10 +17,16 @@ class ChangePhoneController extends Controller
 
     public function updatePhone(Request $request, $id)
     {
-        $request->validate([
-            'phoneLama' => 'required',
-            'phoneBaru' => 'required',
+        // Validasi 
+        $validator = Validator::make($request->all(), [
+            'phoneLama' => 'required|digits_between:10,15',
+            'phoneBaru' => 'required|digits_between:10,15',
         ]);
+        
+        // Jika validasi gagal
+        if ($validator->fails()) {
+            return redirect()->route('changePhone', ['id' => $id])->with('error', 'Ganti nomor telepon gagal, pastikan nomor telepon yang dimasukan valid');
+        }
 
         $account = Account::find($id);
 

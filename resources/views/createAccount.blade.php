@@ -17,6 +17,9 @@
 
     <div class="hero">
         <div class="content">
+            @if (session('error'))
+                <p class="error-message">{{ session('error') }}</p>
+            @endif
             <h1>Pendaftaran Akun Baru</h1>
             <form action="{{ url('/create-account') }}" method="POST" class="create-account-form" onsubmit="return validateTermsForm()">
                 @csrf
