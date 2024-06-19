@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS untuk styling pagination -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/mutation.css') }}">
     <title>Mutasi Rekening</title>
 </head>
@@ -80,6 +82,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="pagination-links">
+                    {{ $personalMutations->appends(request()->input())->links() }}  
+                </div>
             @endif
         </div>
     </div>

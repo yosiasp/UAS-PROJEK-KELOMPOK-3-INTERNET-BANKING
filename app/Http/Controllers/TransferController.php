@@ -36,6 +36,11 @@ class TransferController extends Controller
         // Mencari info balance dari penerima
         $receiver = Balance::where('accountNumber', $accountNumReceiver)->first();
 
+        // Bila no rekening tidak ditemukan
+        if (!$receiver){
+            return redirect()->route('transfer', ['id' => $id])->with('error', 'Nomor rekening tidak ditemukan');
+        }
+
         // Mencari account dari penerima
         $receiverAccount = Account::where('username', $receiver->username)->first();
 

@@ -18,7 +18,7 @@ class MutationController extends Controller
 
         $accountNumber = $balanceInfo->accountNumber;
 
-        // Request sorting dan filter dengan nilai defaultnya
+        // Request sorting dan filter dengan nilai defaultnya masing-masing
         $sortOrder = $request->get('sort_order', 'asc'); 
         $filterType = $request->get('filter_type', 'all'); 
 
@@ -32,10 +32,15 @@ class MutationController extends Controller
             $query->where('type', 'uang keluar');
         }
 
-        $personalMutations = $query->get();
+        // Melakukan sorting berdasarkan waktu mutasi dibuat
         if ($sortOrder == 'desc') {
-            $personalMutations = $personalMutations->reverse();
-        } 
+            $query->orderBy('created_at', 'desc');
+        } else {
+            $query->orderBy('created_at', 'asc');
+        }
+
+        // Pagination dengan masing-masing page maksimal 10 mutasi
+        $personalMutations = $query->paginate(10);
         
         return view('mutation', compact('personalMutations', 'account', 'sortOrder', 'filterType'));
     }
