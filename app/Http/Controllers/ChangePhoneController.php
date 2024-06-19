@@ -23,7 +23,7 @@ class ChangePhoneController extends Controller
 
         $account = Account::find($id);
 
-        if ($account) {
+        if ($account && $account->phone == $request->phoneLama) {
             $account->setAttribute('phone', $request->phoneBaru);
             $account->save();
 
