@@ -27,7 +27,7 @@ class ChangeEmailController extends Controller
             $account->setAttribute('email', $request->emailBaru);
             $account->save();
             return redirect()->back()->with('success', 'Email berhasil diubah');
-        }else{
+        } else{
             return redirect()->back()->with('error', 'Email lama tidak sesuai');
         }
     }

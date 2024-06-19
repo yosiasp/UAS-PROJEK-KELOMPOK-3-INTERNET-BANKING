@@ -31,7 +31,7 @@
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
                         <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
-                        <li><a href="#">Ubah Alamat Email</a></li>
+                        <li><a href="{{ route('changeEmail', ['id' => $account->id]) }}">Ubah Alamat Email</a></li>
                         <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
                         <li><a href="#">Pembaruan Data Diri</a></li>
                     </ul>
@@ -50,8 +50,8 @@
             <form class='passwordInput' action="{{ route('change-email', ['id' => $account->id]) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <input type="text" name="emailLama" placeholder="Masukkan Alamat Email Lama Anda Saat Ini">
-                <input type="text" name="emailBaru" placeholder="Masukkan Alamat Email Baru">
+                <input type="email" name="emailLama" placeholder="Masukkan Alamat Email Lama Anda Saat Ini">
+                <input type="email" name="emailBaru" placeholder="Masukkan Alamat Email Baru">
                 <button type="submit">Ubah Alamat Email</button>
             </form>
         </div>
