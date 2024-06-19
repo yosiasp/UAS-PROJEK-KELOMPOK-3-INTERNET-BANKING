@@ -4,33 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
-class EditEmailController extends Controller
+class EditProfileController extends Controller
 {
-    public function showChangeEmailForm()
-    { 
-        return view('change-email');
-    }
-    
-    public function updateEmail(Request $request)
+    public function editProfilePage()
     {
-         $request->validate([ 
-            'old_email' => 'required|email',
-            'new_email' => 'required|email|unique:users,email',
+        $user = Auth::user();
+        return view('edit-profile', compact('user'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'nama_lengkap' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required|string',
+            'alamat' => 'required|string|max:255',
         ]);
 
         $user = Auth::user();
-
-        if ($user->email !== $request->old_email) {
-            return back()->withErrors(['old_email' => 'Old email is incorrect, please check your email']);
-        }
-
-        $user->email = $request->new_email;
+        $user->nama_lengkap = $request->input('full_name');
+        $user->tanggal_lahir = $request->input('birth_date');
+        $user->jenis_kelamin = $request->input('gender');
+        $user->alamat = $request->input('address');
         $user->save();
 
-        return redirect()->route('home', ['id' => $user->id])->with('success', 'Email updated successfully');
+        return redirect()->route('editProfilePage')->with('success', 'Data diri berhasil diperbarui.');
     }
 }
+
         
