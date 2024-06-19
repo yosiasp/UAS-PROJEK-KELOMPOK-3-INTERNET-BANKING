@@ -29,7 +29,7 @@ class ChangePhoneController extends Controller
 
             return redirect()->back()->with('success', 'Nomor telepon berhasil diubah');
         } else {
-            return redirect()->back()->with('error', 'Akun tidak ditemukan');
+            return redirect()->back()->with('error', 'Nomor telepon lama tidak sesuai');
         }
     }
 }

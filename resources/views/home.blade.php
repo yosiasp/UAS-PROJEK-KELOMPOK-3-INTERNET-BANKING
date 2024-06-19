@@ -33,9 +33,8 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
-                    
-                    <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
-                        <li><a href="#">Ubah Alamat Email</a></li>
+                        <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
+                        <li><a href="{{ route('changeEmail', ['id' => $account->id]) }}">Ubah Alamat Email</a></li>
                         <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
                         <li><a href="#">Pembaruan Data Diri</a></li>
                     </ul>
