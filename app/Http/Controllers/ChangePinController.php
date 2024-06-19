@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Account;
 
 
@@ -17,10 +18,16 @@ class ChangePinController extends Controller
 
     public function updatePin(Request $request, $id)
     {
-        $request->validate([
+        // Validasi 
+        $validator = Validator::make($request->all(), [
             'pinLama' => 'required|string|size:6',
             'pinBaru' => 'required|string|size:6|confirmed',
         ]);
+        
+        // Jika validasi gagal
+        if ($validator->fails()) {
+            return redirect()->route('changePin', ['id' => $id])->with('error', 'Ganti PIN gagal, pastikan PIN valid dan konfirmasi PIN sesuai');
+        }
 
         $account = Account::find($id);
 
