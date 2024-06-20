@@ -17,7 +17,10 @@
 
     <div class="hero">
         <div class="content">
-            <h1>Pendaftaran Akun Baru</h1>
+            @if (session('error'))
+                <p class="error-message">{{ session('error') }}</p>
+            @endif
+            <h2>Pendaftaran Akun Baru</h2>
             <form action="{{ url('/create-account') }}" method="POST" class="create-account-form" onsubmit="return validateTermsForm()">
                 @csrf
                 <label for="fullname">Nama Lengkap:</label>
@@ -42,8 +45,10 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
 
-                <label for="username">Username:</label>
+                <label for="username">Username (6-21 digit angka/huruf/kombinasi keduanya):</label>
                 <input type="text" id="username" name="username" required>
+                <button type="button" id="check-username-button">Cek Ketersediaan Username</button>
+                <p id="username-availability-message"></p>
 
                 <label for="pin">PIN (6 Angka):</label>
                 <div class="password-wrapper">
@@ -86,6 +91,35 @@
                 return false;
             }
             return true;
+        }
+
+        document.getElementById('check-username-button').addEventListener('click', function() {
+            var username = document.getElementById('username').value;
+            var messageElement = document.getElementById('username-availability-message');
+            if (username.length >= 6 && username.length <= 21) {
+                checkUsernameAvailability(username);
+            } else {
+            messageElement.textContent = 'Username harus memiliki panjang antara 6 dan 21 karakter.';
+            messageElement.style.color = 'red'; 
+            }
+        });
+
+        function checkUsernameAvailability(username) {
+            fetch('/check-username?username=' + username)
+            .then(response => response.json())
+            .then(data => {
+                var messageElement = document.getElementById('username-availability-message');
+                if (data.available) {
+                    messageElement.textContent = 'Username tersedia';
+                    messageElement.style.color = 'green';
+                } else {
+                    messageElement.textContent = 'Username tidak tersedia';
+                    messageElement.style.color = 'red';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
     </script>
 </body>

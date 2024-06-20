@@ -47,10 +47,6 @@ class TransferController extends Controller
         // Fullname dari penerima
         $receiverName = $receiverAccount->fullname;
 
-        if (!$receiver) {
-            return redirect()->route('transfer', ['id' => $id])->with('error', 'Nomor rekening tidak ditemukan');
-        }
-
         // Update balance
         $balanceInfo->balance -= $amount;
         $balanceInfo->save();

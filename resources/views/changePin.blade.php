@@ -11,7 +11,7 @@
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
             <li><a href="{{ route('home', ['id' => $account->id]) }}">Home</a></li>
-            <li><a href="{{ url('/customer-service') }}" target="_blank">Costumer Service</a></li>
+            <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
             <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
         </ul>
     </div>
@@ -30,9 +30,9 @@
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
-                    <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
-                        <li><a href="#">Ubah Alamat Email</a></li>
-                        <li><a href="#">Ubah Nomor Telepon</a></li>
+                        <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
+                        <li><a href="{{ route('changeEmail', ['id' => $account->id]) }}">Ubah Alamat Email</a></li>
+                        <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
                         <li><a href="#">Pembaruan Data Diri</a></li>
                     </ul>
                 </li>

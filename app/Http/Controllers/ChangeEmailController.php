@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ChangeEmailController extends Controller
 {
@@ -15,11 +16,16 @@ class ChangeEmailController extends Controller
 
     public function updateEmail(Request $request, $id)
     {
-        
-        $request->validate([
-            'emailLama' => 'required',
-            'emailBaru' => 'required|email|unique:accounts,email',
+        // Validasi 
+         $validator = Validator::make($request->all(), [
+            'emailLama' => 'required|email',
+            'emailBaru' => 'required|email|string|max:255|unique:accounts',
         ]);
+        
+        // Jika validasi gagal
+        if ($validator->fails()) {
+            return redirect()->route('changeEmail', ['id' => $id])->with('error', 'Ganti email gagal, pastikan email valid dan belum digunakan pada akun lain');
+        }
 
         $account = Account::find($id);
 
@@ -27,7 +33,7 @@ class ChangeEmailController extends Controller
             $account->setAttribute('email', $request->emailBaru);
             $account->save();
             return redirect()->back()->with('success', 'Email berhasil diubah');
-        }else{
+        } else{
             return redirect()->back()->with('error', 'Email lama tidak sesuai');
         }
     }
