@@ -1,4 +1,3 @@
-
 * {
     font-family: 'roboto', sans-serif;
     margin: 0;
@@ -21,7 +20,8 @@
     font-weight: bold;
     color: #cdd322;
 }
-.header ul{
+
+.header ul {
     list-style-type: none;
     display: flex;
     gap: 20px;
@@ -40,13 +40,10 @@
 .main-content {
     display: flex;
 }
-.main-content {
-    display: flex;
-}
 
 .sidebar {
     width: 250px;
-    height: 670px;
+    height: 600px;
     background-color: #E5E7EB;
     padding: 20px;
 }
@@ -95,53 +92,74 @@
     flex: 1;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group select {
-    width: calc(100% - 22px);
+.error-message {
+    color: #ff0000 !important;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: 1px solid #ff0000;
+    background-color: #ffe6e6;
     padding: 10px;
-    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.success-message {
+    color: gray !important;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+    background-color: #F9FAF8;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.footer {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    background-color: #1F2937;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer p {
+    color: white;
+}
+
+.logOut {
+    background-color: cornflowerblue;
+}
+
+.profileUpdateForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profileUpdateForm input {
+    width: 480px;
+    padding: 6px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background: #007bff;
-    color: #fff;
-    border: none;
+.profileUpdateForm input:focus {
+    border-color: #3882F6;
+    outline: none;
+}
+
+.profileUpdateForm button {
+    width: 495px;
+    padding: 6px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    background-color: #3882F6;
+    color: white;
     cursor: pointer;
-    margin-top: 20px;
 }
 
-button:hover {
-    background: #0056b3;
+.profileUpdateForm button:hover {
+    background-color: #3170D5;
 }
-
-.alert {
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-}
-
-.alert-success {
-    background: #d4edda;
-    color: #155724;
-}
-
-.alert-danger {
-    background: #f8d7da;
-    color: #721c24;
-}
-
