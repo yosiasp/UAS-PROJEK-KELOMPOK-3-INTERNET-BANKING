@@ -7,6 +7,7 @@ use App\Models\LoginHistory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class LogInController extends Controller
 {
@@ -29,7 +30,7 @@ class LogInController extends Controller
             // Menyimpan login history
             $newLoginHistory = new LoginHistory;
             $newLoginHistory->username = $username;
-            $newLoginHistory->datetime = now();
+            $newLoginHistory->datetime = Carbon::now()->setTimezone('Asia/Jakarta');
             $newLoginHistory->save();
         
             return redirect()->intended(route('home', ['id' => $account->id], absolute: true));
