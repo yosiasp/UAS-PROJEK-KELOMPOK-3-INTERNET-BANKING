@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,9 +14,6 @@ class HomeController extends Controller
             abort(404);
         }
 
-        $currentDate = Carbon::now()->locale('id')->isoFormat('DD/MM/YYYY');
-        $currentTime = Carbon::now()->isoFormat('HH:mm:ss');
-
-        return view('home', compact('account', 'currentDate', 'currentTime'));
+        return view('home', compact('account'));
     }
 }

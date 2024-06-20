@@ -44,8 +44,8 @@
         
         <div class="content">
             <div class="dateTime">
-                <p>Tanggal: {{ $currentDate }}</p> 
-                <p>Jam: {{ $currentTime }}</p> 
+                <p>Tanggal: <span id="current-date"></span></p> 
+                <p>Jam: <span id="current-time"></span></p> 
             </div>
             <h1>Halo {{ $account->fullname }}, Selamat Datang Di Internet Banking Bank Sejahtera</h1>
             <p>Silahkan memilih menu di sebelah kiri untuk mengakses fitur-fitur kami.</p>
@@ -70,6 +70,29 @@
                 subMenu.style.display = "block";
             }
         }
+
+        function updateDateTime() {
+            // Membuat object date baru untuk menyimpan date and time
+            var now = new Date();
+            
+            // Memformat tanggal, bulan, dan tahun menjadi string dua digit
+            var date = String(now.getDate()).padStart(2, '0');
+            var month = String(now.getMonth() + 1).padStart(2, '0'); 
+            var year = now.getFullYear();
+            
+            // Memformat jam, menit dan detik menjadi string dua digit
+            var hours = String(now.getHours()).padStart(2, '0');
+            var minutes = String(now.getMinutes()).padStart(2, '0');
+            var seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            // Format untuk menampilkan tanggal dan jam
+            document.getElementById('current-date').textContent = `${date}/${month}/${year}`;
+            document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Memanggil fungsi updateDateTime setiap 1000 milidetik (1 detik) agar waktu menjadi real-time
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); 
     </script>
 </body>
 </html>
