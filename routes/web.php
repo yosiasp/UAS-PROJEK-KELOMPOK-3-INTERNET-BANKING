@@ -12,7 +12,7 @@ use App\Http\Controllers\ChangePhoneController;
 use App\Http\Controllers\LogInController;
 use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\ChangeEmailController;
-
+use App\Http\Controllers\EditProfileController; //tambahan controllers
 
 Route::get('/', [MainController::class, 'index'])->name('main');
 
@@ -50,6 +50,9 @@ Route::middleware(['guest'])->group(
 
         Route::get('/{id}/change-email', [ChangeEmailController::class, 'index'])->name('changeEmail');
         Route::patch('/{id}/change-email', [ChangeEmailController::class, 'updateEmail'])->name('change-email');
+        //tambahan route editprofile
+        Route::get('/{id}/edit-profile', [EditProfileController::class, 'editProfilePage'])->name('editProfilePage');
+        Route::post('/{id}/edit-profile', [EditProfileController::class, 'updateProfile'])->name('updateProfile');
 
         Route::post('/logout', LogOutController::class)->name('logout');
     }
