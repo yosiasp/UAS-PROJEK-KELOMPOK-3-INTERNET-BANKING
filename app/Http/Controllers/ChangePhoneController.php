@@ -26,17 +26,19 @@ class ChangePhoneController extends Controller
         // Jika validasi gagal
         if ($validator->fails()) {
             return redirect()->route('changePhone', ['id' => $id])->with('error', 'Ganti nomor telepon gagal, pastikan nomor telepon yang dimasukan valid');
-        }
-
-        $account = Account::find($id);
-
-        if ($account && $account->phone == $request->phoneLama) {
-            $account->setAttribute('phone', $request->phoneBaru);
-            $account->save();
-
-            return redirect()->back()->with('success', 'Nomor telepon berhasil diubah');
         } else {
-            return redirect()->back()->with('error', 'Nomor telepon lama tidak sesuai');
+            $account = Account::find($id);
+
+            if ($account && $account->phone == $request->phoneLama) {
+                $account->setAttribute('phone', $request->phoneBaru);
+                $account->save();
+
+                return redirect()->back()->with('success', 'Nomor telepon berhasil diubah');
+            } else {
+                return redirect()->back()->with('error', 'Nomor telepon lama tidak sesuai');
+            }    
         }
+
+
     }
 }
