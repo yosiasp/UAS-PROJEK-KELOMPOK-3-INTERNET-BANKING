@@ -50,9 +50,9 @@
         <form class='passwordInput' action="{{ route('change-pin', ['id' => $account->id]) }}" method="POST">
             @csrf
             @method('PATCH')
-            <input type="password" name="pinLama" placeholder="Masukkan PIN Lama Anda Saat Ini">
-            <input type="password" name="pinBaru" placeholder="Masukkan PIN Baru (6 Angka)">
-            <input type="password" name="pinBaru_confirmation" placeholder="Konfirmasi Ulang PIN Baru">
+            <input type="password" name="pinLama" placeholder="Masukkan PIN Lama Anda Saat Ini" required>
+            <input type="password" name="pinBaru" placeholder="Masukkan PIN Baru (6 Angka)" required>
+            <input type="password" name="pinBaru_confirmation" placeholder="Konfirmasi Ulang PIN Baru" required>
             <button type="submit">Ganti PIN</button>
         </form>
     </div>
