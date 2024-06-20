@@ -31,6 +31,7 @@ Route::middleware(['guest'])->group(
 
         Route::get('/create-account', [CreateAccountController::class, 'index'])->name('accounts');
         Route::post('/create-account', [CreateAccountController::class, 'store'])->name('accounts.store');
+        Route::get('/check-username', [CreateAccountController::class, 'checkUsername'])->name('check-username');
 
         Route::get('/{id}/home', [HomeController::class, 'index'])->name('home');
 
