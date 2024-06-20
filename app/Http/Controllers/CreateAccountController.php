@@ -15,23 +15,31 @@ class CreateAccountController extends Controller
         return view('createAccount');
     }
     
+    public function checkUsername(Request $request)
+    {
+        $username = $request->query('username');
+        $exists = Account::where('username', $username)->exists();
+
+        return response()->json(['available' => !$exists]);
+    }
+
     public function store(Request $request)
     {
         // Validasi 
         $validator = Validator::make($request->all(), [
-            'fullname' => 'required|string|max:255',
+            'fullname' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'dob' => 'required|date',
             'gender' => 'required|string|in:Laki-laki,Perempuan',
             'address' => 'required|string|max:255',
-            'phone' => 'required|digits_between:10,15', 
+            'phone' => 'required|digits_between:10,15|unique:accounts', 
             'email' => 'required|email|string|max:255|unique:accounts',
-            'username' => 'required|string|max:30|unique:accounts',
+            'username' => 'required|string|min:6|max:21|unique:accounts',
             'pin' => 'required|string|size:6|confirmed', 
         ]);
         
         // Jika validasi gagal
         if ($validator->fails()) {
-            return redirect()->route('accounts')->with('error', 'Pembuatan akun gagal');
+            return redirect()->route('accounts')->with('error', 'Pembuatan akun gagal, pastikan email dan nomor telepon belom didatarkan dan PIN serta konfirmasi PIN valid');
         }
 
         $accounts = new Account;
