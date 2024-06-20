@@ -16,18 +16,83 @@
     background-color: #1F2937;
 }
 
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #cdd322;
+}
+.header ul{
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+.header a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #E5E7EB;
+}
+
+.header a:hover {
+    text-decoration-line: underline;
+}
+
+.main-content {
+    display: flex;
+}
+.main-content {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    height: 670px;
+    background-color: #E5E7EB;
+    padding: 20px;
+}
+
+.sidebar .menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar .menu-item {
+    font-size: 18px;
+    color: #1F2937;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.sidebar .menu-item:hover {
+    text-decoration: underline;
+}
+
+.sidebar .sub-menu {
+    list-style-type: none;
+    padding: 0;
+    display: none;
+}
+
+.sidebar .sub-menu li a {
+    font-size: 16px;
+    color: #1F2937;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0 5px 20px;
+}
+
+.sidebar .sub-menu li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    flex: 1;
 }
 
 .form-group {
