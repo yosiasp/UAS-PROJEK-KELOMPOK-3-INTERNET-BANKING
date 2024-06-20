@@ -66,9 +66,9 @@
                     <thead>
                         <tr>
                             <th>Tanggal</th>
-                            <th>Jumlah</th></th>
+                            <th>Mutasi</th></th>
                             <th>Tipe</th>
-                            <th>Deksripsi</th>
+                            <th>Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
