@@ -17,24 +17,24 @@ class ChangeEmailController extends Controller
     public function updateEmail(Request $request, $id)
     {
         // Validasi 
-         $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'emailLama' => 'required|email',
-            'emailBaru' => 'required|email|string|max:255|unique:accounts',
+            'emailBaru' => 'required|email|string|max:255|unique:accounts,email',
         ]);
         
         // Jika validasi gagal
         if ($validator->fails()) {
             return redirect()->route('changeEmail', ['id' => $id])->with('error', 'Ganti email gagal, pastikan email valid dan belum digunakan pada akun lain');
-        }
+        } else {
+            $account = Account::find($id);
 
-        $account = Account::find($id);
-
-        if($account && $account->email == $request->emailLama){
-            $account->setAttribute('email', $request->emailBaru);
-            $account->save();
-            return redirect()->back()->with('success', 'Email berhasil diubah');
-        } else{
-            return redirect()->back()->with('error', 'Email lama tidak sesuai');
-        }
+            if($account && $account->email == $request->emailLama){
+                $account->setAttribute('email', $request->emailBaru);
+                $account->save();
+                return redirect()->back()->with('success', 'Email berhasil diubah');
+            } else{
+                return redirect()->back()->with('error', 'Email lama tidak sesuai');
+            }
+        }   
     }
 }

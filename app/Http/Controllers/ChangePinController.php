@@ -27,17 +27,16 @@ class ChangePinController extends Controller
         // Jika validasi gagal
         if ($validator->fails()) {
             return redirect()->route('changePin', ['id' => $id])->with('error', 'Ganti PIN gagal, pastikan PIN valid dan konfirmasi PIN sesuai');
-        }
-
-        $account = Account::find($id);
-
-        if (Hash::check($request->pinLama, $account->pin)) {
-            $account->setAttribute('pin', Hash::make($request->pinBaru));
-            $account->save();
-            return redirect()->route('changePin', ['id' => $id])->with('status', 'PIN berhasil diubah');
-            
         } else {
-            return redirect()->route('changePin', ['id' => $id])->with('error', 'PIN lama tidak sesuai'); 
+            $account = Account::find($id);
+
+            if (Hash::check($request->pinLama, $account->pin)) {
+                $account->setAttribute('pin', Hash::make($request->pinBaru));
+                $account->save();
+                return redirect()->route('changePin', ['id' => $id])->with('status', 'PIN berhasil diubah');   
+            } else {
+                return redirect()->route('changePin', ['id' => $id])->with('error', 'PIN lama tidak sesuai'); 
+            }
         }
     }
 }
