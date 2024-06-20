@@ -47,6 +47,9 @@
                 <p>Tanggal: <span id="current-date"></span></p> 
                 <p>Jam: <span id="current-time"></span></p> 
             </div>
+            @if ($mostRecentLogin)
+                <p class="last-login">Login Terakhir Anda Tanggal: {{ \Carbon\Carbon::parse($mostRecentLogin->datetime)->format('d/m/Y H:i:s') }}</p>
+            @endif
             <h1>Halo {{ $account->fullname }}, Selamat Datang Di Internet Banking Bank Sejahtera</h1>
             <p>Silahkan memilih menu di sebelah kiri untuk mengakses fitur-fitur kami.</p>
             <img src="{{ asset('img/Home.JPG') }}" width="60%" height="60%">

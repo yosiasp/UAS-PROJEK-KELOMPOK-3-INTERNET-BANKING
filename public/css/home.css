@@ -92,6 +92,11 @@
     flex: 1;
 }
 
+.last-login {
+    font-size: 15px; 
+    color:darkblue;
+}
+
 .contactInfo {
     padding-top:12px;
     font-size:15px;
