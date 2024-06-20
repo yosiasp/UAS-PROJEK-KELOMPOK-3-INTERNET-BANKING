@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/balanceInfo.css') }}">
-    <title>Informasi Rekening</title>
+    <title>Informasi Saldo</title>
 </head>
 <body>
     <div class="header">
