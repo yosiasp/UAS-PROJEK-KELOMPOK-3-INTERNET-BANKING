@@ -50,8 +50,8 @@
             <form class='passwordInput' action="{{ route('change-phone', ['id' => $account->id]) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <input type="tel" name="phoneLama" placeholder="Masukkan Nomor Telepon Lama Anda Saat Ini">
-                <input type="tel" name="phoneBaru" placeholder="Masukkan Nomor Telepon Baru">
+                <input type="tel" name="phoneLama" placeholder="Masukkan Nomor Telepon Lama Anda Saat Ini" required>
+                <input type="tel" name="phoneBaru" placeholder="Masukkan Nomor Telepon Baru" pattern="[0-9]{10,15}" required>
                 <button type="submit">Ubah Nomor Telepon</button>
             </form>
         </div>

@@ -50,8 +50,8 @@
             <form class='passwordInput' action="{{ route('change-email', ['id' => $account->id]) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <input type="email" name="emailLama" placeholder="Masukkan Alamat Email Lama Anda Saat Ini">
-                <input type="email" name="emailBaru" placeholder="Masukkan Alamat Email Baru">
+                <input type="email" name="emailLama" placeholder="Masukkan Alamat Email Lama Anda Saat Ini" required>
+                <input type="email" name="emailBaru" placeholder="Masukkan Alamat Email Baru" required>
                 <button type="submit">Ubah Alamat Email</button>
             </form>
         </div>
