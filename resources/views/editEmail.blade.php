@@ -11,8 +11,11 @@
         <p class="logo">INTERNET BANKING SEJATERA</p>
         <ul>
           <li><a href="{{ route('home', ['id' => Auth::user()->id]) }}">Home</a></li> 
-             <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
-            <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
+            <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="logOut">Log Out</button>
+            </form>
         </ul>
     </div>
 
