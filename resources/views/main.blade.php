@@ -16,6 +16,12 @@
         </div>
 
         <div class="hero">
+            @if (session('error'))
+                <p class="error-message">{{ session('error') }}</p>
+            @endif
+            @if (session('success'))
+                <p class="success-message">{{ session('success') }}</p>
+            @endif
             <div class="content">
                 <div class="texts">
                     <h1>Internet Banking</h1>

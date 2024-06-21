@@ -44,10 +44,13 @@
 }
 
 .hero {
+    display: flex;
+    flex-direction: column;
     background-image: url(../img/Home.jpg);
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center center;     
+
 }
 
 .content {
