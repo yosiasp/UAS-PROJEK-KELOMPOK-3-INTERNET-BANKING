@@ -37,7 +37,7 @@
                         <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer</a></li>
                     </ul> 
                 </li>
-                
+
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
@@ -59,9 +59,9 @@
             @endif
             <h2>Transfer Dana - Transfer</h2>
             @if($accountList->isEmpty())
-                <h3>Belum Ada Nomor Rekening yang Terdaftar</h3>
-                <p>Silakan mendaftarkan nomor rekening terlebih dahulu.</p>
-                <a href="{{ route('accountList', ['id' => $account->id]) }}">Daftarkan Rekening Baru</a>
+                <h3>Belum Ada Nomor Rekening Tujuan yang Terdaftar</h3>
+                <p>Silakan mendaftarkan nomor rekening tujuan terlebih dahulu.</p>
+                <a href="{{ route('accountList', ['id' => $account->id]) }}">Daftar Nomor Rekening Tujuan Baru</a>
             @else
                 <form id='transferForm' class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
                     @csrf

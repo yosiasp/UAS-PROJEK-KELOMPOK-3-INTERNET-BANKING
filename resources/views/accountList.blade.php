@@ -55,9 +55,9 @@
                 <p class="status-message">{{ session('status') }}</p>
             @endif
             <h2>Transfer Dana - Daftar Rekening Tujuan</h2>
-            <form class='accountNumberInput' action="{{ route('account-list', ['id' => $account->id]) }}" method="POST">
+            <form class='accountNumberInput' id='account' action="{{ route('account-list', ['id' => $account->id]) }}" method="POST">
                 @csrf
-                <label for="account">No rekening</label>
+                <label for="account">No rekening:</label>
                 <input type="text" id="accountNumber" name="accountNumber" required>
                 <button type="submit">Daftarkan</button>
             </form>

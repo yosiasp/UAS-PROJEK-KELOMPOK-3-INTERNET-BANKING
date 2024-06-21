@@ -113,6 +113,26 @@
     flex: 1;
   }
 
+  .accountNumberInput {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .accountNumberInput input {
+    height: 20px;
+  }
+
+  .accountNumberInput button {
+    font-size: 13px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 3px;
+  }
+
   .footer {
     padding-top: 35px;
     padding-bottom: 35px;
