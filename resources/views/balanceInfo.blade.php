@@ -50,7 +50,7 @@
                 </div>
                 <div class="column2">
                     <P class="row1">Saldo Efektif</P>
-                    <p class="row2">Rp{{ $balanceInfo->balance }}</p>   
+                    <p class="row2">Rp{{ number_format($balanceInfo->balance, 0, ',', '.') }}</p>   
                 </div>
             </div>
         </div>

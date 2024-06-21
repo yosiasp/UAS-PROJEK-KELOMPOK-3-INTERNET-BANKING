@@ -50,13 +50,13 @@
                 <p class="status-message">{{ session('status') }}</p>
             @endif
             <h2>Transfer Dana</h2>
-            <form class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
+            <form id='transferForm'class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
                 @csrf
                 <label for="account">No rekening</label>
                 <input type="text" id="account" name="account" required>
 
                 <label for="amount">Jumlah</label>
-                <input type="number" id="amount" name="amount" required>
+                <input type="text" id="amount" name="amount" required>
 
                 <label for="description">Berita</label>
                 <input type="text" id="description" name="description">
@@ -79,6 +79,24 @@
                 subMenu.style.display = "block";
             }
         }
+
+        document.getElementById('account').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, ''); // Membuang input yang bukan angka
+            e.target.value = value;
+        });
+
+        document.getElementById('amount').addEventListener('input', function (e) {
+            let value = e.target.value;
+            value = value.replace(/\D/g, ''); // Membuang input yang bukan angka
+            value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Menambahkan titik sebagai separator
+            e.target.value = value;
+        });
+
+        document.getElementById('transferForm').addEventListener('submit', function (e) {
+            let amountInput = document.getElementById('amount');
+            let value = amountInput.value.replace(/\./g, ''); // Membuang titik pemisah sebelum dimasukan ke back-end
+            amountInput.value = value;
+        });
     </script>
 </body>
 </html>

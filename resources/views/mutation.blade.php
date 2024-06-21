@@ -78,7 +78,7 @@
                         @foreach($personalMutations as $mutation)
                         <tr>
                             <td>{{ $mutation->date }}</td>
-                            <td>Rp{{ $mutation->amount }}</td>
+                            <td>Rp{{number_format($mutation->amount , 0, ',', '.') }}</td>
                             <td>{{ $mutation->type }}</td>
                             <td>{{ $mutation->news }}</td>
                         </tr>
