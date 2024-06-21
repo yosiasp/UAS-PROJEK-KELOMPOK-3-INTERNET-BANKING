@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use App\Models\Balance;
 use App\Models\Mutation;
+use App\Models\AccountList;
 use Illuminate\Http\Request;
 
 class TransferController extends Controller
@@ -12,8 +13,11 @@ class TransferController extends Controller
     public function index($id) 
     {
         $account = Account::find($id);
+        $accountList = AccountList::where('username', $account->username)
+                                  ->orderBy('created_at', 'desc')
+                                  ->get();
 
-        return view("transfer",  compact('account'));
+        return view("transfer", compact('account', 'accountList'));
     }
 
 
