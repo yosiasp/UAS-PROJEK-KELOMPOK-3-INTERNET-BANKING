@@ -50,7 +50,7 @@
                 <p class="success-message">{{ session('success') }}</p>
             @endif
             <h2>Administrasi - Ubah Nomor Telepon</h2>
-            <form class='passwordInput' action="{{ route('change-phone', ['id' => $account->id]) }}" method="POST">
+            <form class='phoneInput' action="{{ route('change-phone', ['id' => $account->id]) }}" method="POST">
                 @csrf
                 @method('PATCH')
                 <input type="tel" name="phoneLama" class="phone" placeholder="Masukkan Nomor Telepon Lama Anda Saat Ini" required>

@@ -56,7 +56,7 @@ class UpdateProfileController extends Controller
                  
             $account->save();
             
-            return redirect()->route('updateProfile', ['id' => $id])->with('success', 'Pembaruan data diri berhasil');
+            return redirect()->route('updateProfile', ['id' => $id])->with('status', 'Pembaruan data diri berhasil');
         }
 
     }

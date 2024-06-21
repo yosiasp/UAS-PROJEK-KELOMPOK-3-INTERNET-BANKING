@@ -29,7 +29,7 @@
                         <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('update-profile', ['id' => $account->id]) }}">Transfer Dana</a></li>
+                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
@@ -46,16 +46,26 @@
             @if (session('error'))
                 <p class="error-message">{{ session('error') }}</p>
             @endif
-            @if (session('success'))
-                <p class="success-message">{{ session('success') }}</p>
+            @if (session('status'))
+                <p class="status-message">{{ session('status') }}</p>
             @endif
             <h2>Administrasi - Pembaruan Data Diri</h2>
-            <form class='profileUpdateForm' action="{{ route('updateProfile', ['id' => $account->id]) }}" method="POST">
+            <form class='updateProfileForm' action="{{ route('updateProfile', ['id' => $account->id]) }}" method="POST">
                 @csrf
                 @method('PATCH')
+                <label for="fullname">Nama Lengkap:</label>
                 <input type="text" name="fullname" placeholder="Masukkan Nama Lengkap Anda" value="{{ $account->fullname }}" required>
+
+                <label for="dob">Tanggal Lahir:</label>
                 <input type="date" name="dob" placeholder="Masukkan Tanggal Lahir Anda" value="{{ $account->dob }}" required>
-                <input type="text" name="gender" placeholder="Masukkan Jenis Kelamin Anda" value="{{ $account->gender }}" required>
+
+                <label for="gender">Jenis Kelamin:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Laki-laki" {{ $account->gender == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                    <option value="Perempuan" {{ $account->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                </select>
+
+                <label for="address">Alamat:</label>
                 <input type="text" name="address" placeholder="Masukkan Alamat Anda" value="{{ $account->address }}" required>
                 <button type="submit">Perbarui Data Diri</button>
             </form>

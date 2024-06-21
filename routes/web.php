@@ -52,7 +52,7 @@ Route::middleware(['guest'])->group(
         Route::patch('/{id}/change-email', [ChangeEmailController::class, 'updateEmail'])->name('change-email');
         
         Route::get('/{id}/update-profile', [UpdateProfileController::class, 'index'])->name('updateProfile');
-        Route::post('/{id}/update-profile', [UpdateProfileController::class, 'updateProfile'])->name('update-profile');
+        Route::patch('/{id}/update-profile', [UpdateProfileController::class, 'updateProfile'])->name('update-profile');
 
         Route::post('/logout', LogOutController::class)->name('logout');
     }
