@@ -33,14 +33,14 @@
                             <p>{{ $message }}</p>
                         @enderror
                         <label for="pin">PIN:</label>
-                        <input type="password" id="pin" name="pin" required>
+                        <input type="password" id="pin" class="password" name="pin" required>
                         @error('pin')
                             <p>{{ $message }}</p>
                         @enderror
                         <button>Masuk</button>
                     </form>
-                    <!-- <button class ="newAccount" onclick="location.href='{{ url('/create-account') }}'" >Buat akun</button> -->
                 </div>
+                <a href="{{ url('/') }}">Kembali ke beranda >></a>
             </div>
         </div>
 
@@ -51,5 +51,13 @@
         <div class="footer">
             <p>Copyright &#169 2024 Bank Sejahtera (Persero) tbk</p>
         </div>
+        <script>
+            document.querySelectorAll('.password').forEach(function(element) {
+                element.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, ''); // Membuang input yang bukan angka
+                e.target.value = value;
+                });
+            });
+        </script>
     </body>
 </html>
