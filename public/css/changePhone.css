@@ -162,13 +162,13 @@
     border-style: none;
 }
 
-.passwordInput {
+.phoneInput {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.passwordInput input {
+.phoneInput input {
     width: 480px;
     padding: 6px;
     font-size: 14px;
@@ -176,12 +176,12 @@
     border-radius: 5px;
   }
   
-.passwordInput input:focus {
+.phoneInput input:focus {
     border-color: #3882F6;
     outline: none;
   }
 
-.passwordInput button {
+.phoneInput button {
     width: 495px;
     padding: 6px;
     border: 1px solid #ccc;
