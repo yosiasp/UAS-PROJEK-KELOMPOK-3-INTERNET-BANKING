@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/editProfile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/updateProfile.css') }}">
     <title>Pembaruan Data Diri</title>
 </head>
 <body>
@@ -29,14 +29,14 @@
                         <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
+                <li><a href="{{ route('update-profile', ['id' => $account->id]) }}">Transfer Dana</a></li>
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
                         <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
                         <li><a href="{{ route('changeEmail', ['id' => $account->id]) }}">Ubah Alamat Email</a></li>
                         <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
-                        <li><a href="{{ route('editProfile', ['id' => $account->id]) }}">Pembaruan Data Diri</a></li>
+                        <li><a href="{{ route('updateProfile', ['id' => $account->id]) }}">Pembaruan Data Diri</a></li>
                     </ul>
                 </li>
             </ul>
@@ -53,10 +53,10 @@
             <form class='profileUpdateForm' action="{{ route('updateProfile', ['id' => $account->id]) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <input type="text" name="nama_lengkap" placeholder="Masukkan Nama Lengkap Anda" value="{{ $user->nama_lengkap }}" required>
-                <input type="date" name="tanggal_lahir" placeholder="Masukkan Tanggal Lahir Anda" value="{{ $user->tanggal_lahir }}" required>
-                <input type="text" name="jenis_kelamin" placeholder="Masukkan Jenis Kelamin Anda" value="{{ $user->jenis_kelamin }}" required>
-                <input type="text" name="alamat" placeholder="Masukkan Alamat Anda" value="{{ $user->alamat }}" required>
+                <input type="text" name="fullname" placeholder="Masukkan Nama Lengkap Anda" value="{{ $account->fullname }}" required>
+                <input type="date" name="dob" placeholder="Masukkan Tanggal Lahir Anda" value="{{ $account->dob }}" required>
+                <input type="text" name="gender" placeholder="Masukkan Jenis Kelamin Anda" value="{{ $account->gender }}" required>
+                <input type="text" name="address" placeholder="Masukkan Alamat Anda" value="{{ $account->address }}" required>
                 <button type="submit">Perbarui Data Diri</button>
             </form>
         </div>

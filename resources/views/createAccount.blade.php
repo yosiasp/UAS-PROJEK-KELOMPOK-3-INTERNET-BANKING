@@ -40,7 +40,7 @@
                 <input type="text" id="address" name="address" required>
 
                 <label for="phone">Nomor Telepon:</label>
-                <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}" required>
+                <input type="tel" id="phone" name="phone" class="phone" pattern="[0-9]{10,15}" required>
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -121,6 +121,14 @@
                 console.error('Error:', error);
             });
         }
+
+
+        document.querySelectorAll('.phone').forEach(function(element) {
+            element.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, ''); // Membuang input yang bukan angka
+                e.target.value = value;
+            });
+        });
 
         document.querySelectorAll('.password').forEach(function(element) {
             element.addEventListener('input', function (e) {

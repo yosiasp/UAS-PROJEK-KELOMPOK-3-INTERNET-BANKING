@@ -36,7 +36,7 @@
                         <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
                         <li><a href="{{ route('changeEmail', ['id' => $account->id]) }}">Ubah Alamat Email</a></li>
                         <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
-                        <li><a href="#">Pembaruan Data Diri</a></li>
+                        <li><a href="{{ route('updateProfile', ['id' => $account->id]) }}">Pembaruan Data Diri</a></li>
                     </ul>
                 </li>
             </ul>

@@ -36,7 +36,7 @@
                         <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
                         <li><a href="{{ route('changeEmail', ['id' => $account->id]) }}">Ubah Alamat Email</a></li>
                         <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
-                        <li><a href="#">Pembaruan Data Diri</a></li>
+                        <li><a href="{{ route('updateProfile', ['id' => $account->id]) }}">Pembaruan Data Diri</a></li>
                     </ul>
                 </li>
             </ul>
@@ -53,8 +53,8 @@
             <form class='passwordInput' action="{{ route('change-phone', ['id' => $account->id]) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <input type="tel" name="phoneLama" placeholder="Masukkan Nomor Telepon Lama Anda Saat Ini" required>
-                <input type="tel" name="phoneBaru" placeholder="Masukkan Nomor Telepon Baru" pattern="[0-9]{10,15}" required>
+                <input type="tel" name="phoneLama" class="phone" placeholder="Masukkan Nomor Telepon Lama Anda Saat Ini" required>
+                <input type="tel" name="phoneBaru" class="phone" placeholder="Masukkan Nomor Telepon Baru" pattern="[0-9]{10,15}" required>
                 <button type="submit">Ubah Nomor Telepon</button>
             </form>
         </div>
@@ -73,6 +73,13 @@
                 subMenu.style.display = "block";
             }
         }
+
+        document.querySelectorAll('.phone').forEach(function(element) {
+            element.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, ''); // Membuang input yang bukan angka
+                e.target.value = value;
+            });
+        });
     </script>
 </body>
 </html>
