@@ -52,13 +52,13 @@
 
                 <label for="pin">PIN (6 Angka):</label>
                 <div class="password-wrapper">
-                    <input type="password" id="pin" name="pin" required>
+                    <input class="password" type="password" id="pin" name="pin" required>
                     <span class="toggle-password" onmousedown="showPassword('pin')" onmouseup="hidePassword('pin')" onmouseout="hidePassword('pin')">👁️</span>
                 </div>
 
                 <label for="confirm-pin">Konfirmasi PIN:</label>
                 <div class="password-wrapper">
-                    <input type="password" id="pin_confirmation" name="pin_confirmation" required>
+                    <input class="password" type="password" id="pin_confirmation" name="pin_confirmation" required>
                     <span class="toggle-password" onmousedown="showPassword('pin_confirmation')" onmouseup="hidePassword('pin_confirmation')" onmouseout="hidePassword('pin_confirmation')">👁️</span>
                 </div>
 
@@ -121,6 +121,13 @@
                 console.error('Error:', error);
             });
         }
+
+        document.querySelectorAll('.password').forEach(function(element) {
+            element.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, ''); // Membuang input yang bukan angka
+                e.target.value = value;
+            });
+        });
     </script>
 </body>
 </html>

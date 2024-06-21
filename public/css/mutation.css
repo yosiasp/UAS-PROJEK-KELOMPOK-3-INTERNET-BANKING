@@ -155,5 +155,13 @@ button {
 }
 
 .logOut {
-    background-color:cornflowerblue
+    background-color:cornflowerblue;   
+    color: white;
+    font-size: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 4px;
+    border-style: none;
 }

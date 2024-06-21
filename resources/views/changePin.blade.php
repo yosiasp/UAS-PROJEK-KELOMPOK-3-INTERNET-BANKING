@@ -53,9 +53,9 @@
         <form class='passwordInput' action="{{ route('change-pin', ['id' => $account->id]) }}" method="POST">
             @csrf
             @method('PATCH')
-            <input type="password" name="pinLama" placeholder="Masukkan PIN Lama Anda Saat Ini" required>
-            <input type="password" name="pinBaru" placeholder="Masukkan PIN Baru (6 Angka)" required>
-            <input type="password" name="pinBaru_confirmation" placeholder="Konfirmasi Ulang PIN Baru" required>
+            <input type="password" class='password' name="pinLama" placeholder="Masukkan PIN Lama Anda Saat Ini" required>
+            <input type="password" class='password' name="pinBaru" placeholder="Masukkan PIN Baru (6 Angka)" required>
+            <input type="password" class='password' name="pinBaru_confirmation" placeholder="Konfirmasi Ulang PIN Baru" required>
             <button type="submit">Ganti PIN</button>
         </form>
     </div>
@@ -74,6 +74,13 @@
                 subMenu.style.display = "block";
             }
         }
+
+        document.querySelectorAll('.password').forEach(function(element) {
+            element.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, ''); // Membuang input yang bukan angka
+                e.target.value = value;
+            });
+        });
     </script>
 </body>
 </html>
