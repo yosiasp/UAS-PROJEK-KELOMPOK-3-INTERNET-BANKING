@@ -13,6 +13,7 @@ use App\Http\Controllers\LogInController;
 use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\ChangeEmailController;
 use App\Http\Controllers\UpdateProfileController; 
+use App\Http\Controllers\AccountListController; 
 
 Route::get('/', [MainController::class, 'index'])->name('main');
 
@@ -53,6 +54,9 @@ Route::middleware(['guest'])->group(
         
         Route::get('/{id}/update-profile', [UpdateProfileController::class, 'index'])->name('updateProfile');
         Route::patch('/{id}/update-profile', [UpdateProfileController::class, 'updateProfile'])->name('update-profile');
+
+        Route::get('/{id}/accountList', [AccountListController::class, 'index'])->name('accountList');
+        Route::post('/{id}/accountList', [AccountListController::class, 'storeAccount'])->name('account-list');
 
         Route::post('/logout', LogOutController::class)->name('logout');
     }

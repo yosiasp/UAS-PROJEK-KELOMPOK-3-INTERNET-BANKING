@@ -29,7 +29,15 @@
                         <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
+
+                <li>
+                    <a href="#" class="menu-item" onclick="toggleSubMenu('transfer')">Transfer Dana</a>
+                    <ul class="sub-menu" id="transfer">
+                        <li><a href="{{ route('accountList', ['id' => $account->id]) }}">Daftar Rekening Tujuan</a></li>     
+                        <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer</a></li>
+                    </ul> 
+                </li>
+
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">

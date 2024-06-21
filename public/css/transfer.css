@@ -132,6 +132,12 @@
   gap: 10px;
 }
 
+.transferInfo select {
+  width: 494px;
+  height: 30px;
+  padding: 3px 6px;
+}
+
 .transferInfo input {
   width: 480px;
   padding: 6px;

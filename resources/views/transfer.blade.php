@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/transfer.css') }}">
-    <title>Transfer Dana</title>
+    <title>Transfer</title>
 </head>
 <body>
     <div class="header">
@@ -29,7 +29,15 @@
                         <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
+                
+                <li>
+                    <a href="#" class="menu-item" onclick="toggleSubMenu('transfer')">Transfer Dana</a>
+                    <ul class="sub-menu" id="transfer">
+                        <li><a href="{{ route('accountList', ['id' => $account->id]) }}">Daftar Rekening Tujuan</a></li>     
+                        <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer</a></li>
+                    </ul> 
+                </li>
+
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
@@ -49,20 +57,30 @@
             @if (session('status'))
                 <p class="status-message">{{ session('status') }}</p>
             @endif
-            <h2>Transfer Dana</h2>
-            <form id='transferForm'class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
-                @csrf
-                <label for="account">No rekening</label>
-                <input type="text" id="account" name="account" required>
+            <h2>Transfer Dana - Transfer</h2>
+            @if($accountList->isEmpty())
+                <h3>Belum Ada Nomor Rekening Tujuan yang Terdaftar</h3>
+                <p>Silakan mendaftarkan nomor rekening tujuan terlebih dahulu.</p>
+                <a href="{{ route('accountList', ['id' => $account->id]) }}">Daftar Nomor Rekening Tujuan Baru</a>
+            @else
+                <form id='transferForm' class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
+                    @csrf
+                    <label for="account">No rekening</label>
+                    <select id="account" name="account" required>
+                        @foreach($accountList as $account)
+                            <option value="{{ $account->accountNumber }}">{{ $account->accountNumber }} {{ $account->fullname }}</option>
+                        @endforeach
+                    </select>
 
-                <label for="amount">Jumlah</label>
-                <input type="text" id="amount" name="amount" required>
+                    <label for="amount">Jumlah</label>
+                    <input type="text" id="amount" name="amount" required>
 
-                <label for="description">Berita</label>
-                <input type="text" id="description" name="description">
+                    <label for="description">Berita</label>
+                    <input type="text" id="description" name="description">
 
-                <input type="submit" value="Transfer">
-            </form>
+                    <input type="submit" value="Transfer">
+                </form>
+            @endif
         </div>
     </div>
 
