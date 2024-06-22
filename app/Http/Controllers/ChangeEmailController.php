@@ -18,13 +18,13 @@ class ChangeEmailController extends Controller
     {
         // Validasi 
         $validator = Validator::make($request->all(), [
-            'emailLama' => 'required|email',
+            'emailLama' => 'required|email|string|max:255|',
             'emailBaru' => 'required|email|string|max:255|unique:accounts,email',
         ]);
         
         // Jika validasi gagal
         if ($validator->fails()) {
-            return redirect()->route('changeEmail', ['id' => $id])->with('error', 'Ganti email gagal, pastikan email valid dan belum digunakan pada akun lain');
+            return redirect()->route('changeEmail', ['id' => $id])->with('error', 'Pengubahan email gagal, pastikan email baru belum pernah didaftarkan');
         } else {
             $account = Account::find($id);
 
