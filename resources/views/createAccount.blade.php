@@ -31,7 +31,7 @@
 
                 <label for="gender">Jenis Kelamin:</label>
                 <select id="gender" name="gender" required>
-                    <option value="">Pilih opsi</option>
+                    <option value="" disabled selected>Pilih opsi</option>
                     <option value="Laki-laki">Laki-laki</option>
                     <option value="Perempuan">Perempuan</option>
                 </select>
@@ -46,19 +46,19 @@
                 <input type="email" id="email" name="email" required>
 
                 <label for="username">Username (6-21 digit angka/huruf/kombinasi keduanya):</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" pattern="[A-Za-z0-9]{6,21}" required>
                 <button type="button" id="check-username-button">Cek Ketersediaan Username</button>
                 <p id="username-availability-message"></p>
 
                 <label for="pin">PIN (6 Angka):</label>
                 <div class="password-wrapper">
-                    <input class="password" type="password" id="pin" name="pin" required>
+                    <input class="password" type="password" id="pin" name="pin" pattern="[0-9]{6}" required>
                     <span class="toggle-password" onmousedown="showPassword('pin')" onmouseup="hidePassword('pin')" onmouseout="hidePassword('pin')">👁️</span>
                 </div>
 
                 <label for="confirm-pin">Konfirmasi PIN:</label>
                 <div class="password-wrapper">
-                    <input class="password" type="password" id="pin_confirmation" name="pin_confirmation" required>
+                    <input class="password" type="password" id="pin_confirmation" pattern="[0-9]{6}" name="pin_confirmation" required>
                     <span class="toggle-password" onmousedown="showPassword('pin_confirmation')" onmouseup="hidePassword('pin_confirmation')" onmouseout="hidePassword('pin_confirmation')">👁️</span>
                 </div>
 
@@ -92,6 +92,10 @@
             }
             return true;
         }
+
+        document.getElementById('username').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\s/g, ''); // Membuang spasi dari input
+        });
 
         document.getElementById('check-username-button').addEventListener('click', function() {
             var username = document.getElementById('username').value;

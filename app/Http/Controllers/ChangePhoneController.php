@@ -20,12 +20,12 @@ class ChangePhoneController extends Controller
         // Validasi 
         $validator = Validator::make($request->all(), [
             'phoneLama' => 'required|digits_between:10,15',
-            'phoneBaru' => 'required|digits_between:10,15',
+            'phoneBaru' => 'required|digits_between:10,15|unique:accounts,phone',
         ]);
         
         // Jika validasi gagal
         if ($validator->fails()) {
-            return redirect()->route('changePhone', ['id' => $id])->with('error', 'Ganti nomor telepon gagal, pastikan nomor telepon yang dimasukan valid');
+            return redirect()->route('changePhone', ['id' => $id])->with('error', 'Pengubahan nomor telepon gagal, pastikan nomor telepon baru belum pernah didaftarkan');
         } else {
             $account = Account::find($id);
 

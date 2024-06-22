@@ -26,7 +26,7 @@ class ChangePinController extends Controller
         
         // Jika validasi gagal
         if ($validator->fails()) {
-            return redirect()->route('changePin', ['id' => $id])->with('error', 'Ganti PIN gagal, pastikan PIN valid dan konfirmasi PIN sesuai');
+            return redirect()->route('changePin', ['id' => $id])->with('error', 'Ganti PIN gagal, pastikan PIN dan konfirmasi PIN sama');
         } else {
             $account = Account::find($id);
 

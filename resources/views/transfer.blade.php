@@ -67,6 +67,7 @@
                     @csrf
                     <label for="account">No rekening</label>
                     <select id="account" name="account" required>
+                        <option value="" disabled selected>- PILIH -</option>
                         @foreach($accountList as $account)
                             <option value="{{ $account->accountNumber }}">{{ $account->accountNumber }} {{ $account->fullname }}</option>
                         @endforeach

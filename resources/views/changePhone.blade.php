@@ -61,7 +61,7 @@
             <form class='phoneInput' action="{{ route('change-phone', ['id' => $account->id]) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <input type="tel" name="phoneLama" class="phone" placeholder="Masukkan Nomor Telepon Lama Anda Saat Ini" required>
+                <input type="tel" name="phoneLama" class="phone" placeholder="Masukkan Nomor Telepon Lama Anda Saat Ini" pattern="[0-9]{10,15}" required>
                 <input type="tel" name="phoneBaru" class="phone" placeholder="Masukkan Nomor Telepon Baru" pattern="[0-9]{10,15}" required>
                 <button type="submit">Ubah Nomor Telepon</button>
             </form>

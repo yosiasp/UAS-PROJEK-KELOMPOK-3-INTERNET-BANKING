@@ -32,15 +32,15 @@ class CreateAccountController extends Controller
             'dob' => 'required|date',
             'gender' => 'required|string|in:Laki-laki,Perempuan',
             'address' => 'required|string|max:255',
-            'phone' => 'required|digits_between:10,15|unique:accounts', 
-            'email' => 'required|email|string|max:255|unique:accounts',
+            'phone' => 'required|digits_between:10,15|unique:accounts,phone', 
+            'email' => 'required|email|string|max:255|unique:accounts,email',
             'username' => 'required|string|min:6|max:21|unique:accounts',
             'pin' => 'required|string|size:6|confirmed', 
         ]);
         
         // Jika validasi gagal
         if ($validator->fails()) {
-            return redirect()->route('accounts')->with('error', 'Pembuatan akun gagal, pastikan email dan nomor telepon belom didatarkan dan PIN serta konfirmasi PIN valid');
+            return redirect()->route('accounts')->with('error', 'Pembuatan akun gagal, pastikan nomor telepon dan email belom pernah didaftarkan serta PIN dan konfirmasi PIN sama');
         } else {
             $accounts = new Account;
             $accounts->fullname = $request->fullname;
