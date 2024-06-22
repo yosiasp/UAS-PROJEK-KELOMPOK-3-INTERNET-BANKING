@@ -14,6 +14,7 @@
             <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
+                @method('DELETE')
                 <button type="submit" class="logOut">Log Out</button>
             </form>
         </ul>

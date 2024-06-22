@@ -33,9 +33,35 @@ Route::middleware(['guest'])->group(
         Route::get('/create-account', [CreateAccountController::class, 'index'])->name('accounts');
         Route::post('/create-account', [CreateAccountController::class, 'store'])->name('accounts.store');
         Route::get('/check-username', [CreateAccountController::class, 'checkUsername'])->name('check-username');
+
+        Route::get('/{id}/home', [HomeController::class, 'index'])->name('home');
+
+        Route::get('/{id}/transfer', [TransferController::class, 'index'])->name('transfer');
+        Route::post('/{id}/transfer', [TransferController::class, 'store'])->name('transfer.store');
+
+        Route::get('/{id}/mutation', [MutationController::class, 'index'])->name('mutation');
+
+        Route::get('/{id}/change-pin', [ChangePinController::class, 'index'])->name('changePin');
+        Route::patch('/{id}/change-pin', [ChangePinController::class, 'updatePin'])->name('change-pin');
+
+        Route::get('/{id}/balanceInfo', [BalanceInfoController::class, 'index'])->name('balanceInfo');
+
+        Route::get('/{id}/change-phone', [ChangePhoneController::class, 'index'])->name('changePhone');
+        Route::patch('/{id}/change-phone', [ChangePhoneController::class, 'updatePhone'])->name('change-phone');
+
+        Route::get('/{id}/change-email', [ChangeEmailController::class, 'index'])->name('changeEmail');
+        Route::patch('/{id}/change-email', [ChangeEmailController::class, 'updateEmail'])->name('change-email');
+        
+        Route::get('/{id}/update-profile', [UpdateProfileController::class, 'index'])->name('updateProfile');
+        Route::patch('/{id}/update-profile', [UpdateProfileController::class, 'updateProfile'])->name('update-profile');
+
+        Route::get('/{id}/accountList', [AccountListController::class, 'index'])->name('accountList');
+        Route::post('/{id}/accountList', [AccountListController::class, 'storeAccount'])->name('account-list');
+
+        Route::delete('/logout', LogOutController::class)->name('logout');
     }
 );
-
+/*
 Route::middleware(['auth'])->group(
     function() {
         Route::get('/{id}/home', [HomeController::class, 'index'])->name('home');
@@ -64,4 +90,4 @@ Route::middleware(['auth'])->group(
 
         Route::post('/logout', LogOutController::class)->name('logout');
     }
-);
+);*/
