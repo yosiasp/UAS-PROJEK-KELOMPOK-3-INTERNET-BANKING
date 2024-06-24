@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/balanceInfo.css') }}">
-    <title>Informasi Saldo</title>
+    <link rel="stylesheet" href="{{ asset('css/updateProfile.css') }}">
+    <title>Pembaruan Data Diri</title>
 </head>
 <body>
     <div class="header">
@@ -14,6 +14,7 @@
             <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
+                @method('DELETE')
                 <button type="submit" class="logOut">Log Out</button>
             </form>
         </ul>
@@ -37,7 +38,7 @@
                         <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer</a></li>
                     </ul> 
                 </li>
-                
+
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
@@ -48,21 +49,36 @@
                     </ul>
                 </li>
             </ul>
-        </div>
+        </div>    
+
         <div class="content">
-            <h2>Informasi Rekening - Informasi Saldo</h2>
-            <div class="table">
-                <div class="column1">
-                    <P class="row1">No Rekening</P>
-                    <p class="row2">{{ $balanceInfo->accountNumber }}</p>
-                </div>
-                <div class="column2">
-                    <P class="row1">Saldo Efektif</P>
-                    <p class="row2">Rp{{ number_format($balanceInfo->balance, 0, ',', '.') }}</p>   
-                </div>
-            </div>
+            @if (session('error'))
+                <p class="error-message">{{ session('error') }}</p>
+            @endif
+            @if (session('status'))
+                <p class="status-message">{{ session('status') }}</p>
+            @endif
+            <h2>Administrasi - Pembaruan Data Diri</h2>
+            <form class='updateProfileForm' action="{{ route('updateProfile', ['id' => $account->id]) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <label for="fullname">Nama Lengkap:</label>
+                <input type="text" name="fullname" placeholder="Masukkan Nama Lengkap Anda" value="{{ $account->fullname }}" required>
+
+                <label for="dob">Tanggal Lahir:</label>
+                <input type="date" name="dob" placeholder="Masukkan Tanggal Lahir Anda" value="{{ $account->dob }}" required>
+
+                <label for="gender">Jenis Kelamin:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Laki-laki" {{ $account->gender == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                    <option value="Perempuan" {{ $account->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                </select>
+
+                <label for="address">Alamat:</label>
+                <input type="text" name="address" placeholder="Masukkan Alamat Anda" value="{{ $account->address }}" required>
+                <button type="submit">Perbarui Data Diri</button>
+            </form>
         </div>
-        
     </div>
 
     <div class="footer">
@@ -81,4 +97,3 @@
     </script>
 </body>
 </html>
-

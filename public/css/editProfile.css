@@ -13,7 +13,6 @@
     justify-content: space-between;
     align-items: center;
     background-color: #1F2937;
-    height: 65px;
 }
 
 .logo {
@@ -21,7 +20,8 @@
     font-weight: bold;
     color: #cdd322;
 }
-.header ul{
+
+.header ul {
     list-style-type: none;
     display: flex;
     gap: 20px;
@@ -43,7 +43,7 @@
 
 .sidebar {
     width: 250px;
-    height: 695px;
+    height: 600px;
     background-color: #E5E7EB;
     padding: 20px;
 }
@@ -87,64 +87,37 @@
 .content {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 12px;
     padding: 20px;
     flex: 1;
 }
 
-.filter-form {
-    display: flex;
-    flex-direction: row;
-    gap: 6px;
-}
-
-h2 {
+.error-message {
+    color: #ff0000 !important;
     font-weight: bold;
-    font-size:24px;
-}
-
-.content table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-.content th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-.content th {
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: left;
-}
-
-button {
-    background-color:lightslategray; 
-    color: white;
-    padding: 3px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ff0000;
+    background-color: #ffe6e6;
+    padding: 10px;
+    border-radius: 5px;
     text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-    border-radius: 4px;
 }
 
-.filter-form select {
-    padding-left: 4px;
-    font-size: 14px; 
-    color: #333; 
-}
-
-.filter-form option {
-    font-size: 14px; 
-    color: #333; 
+.success-message {
+    color: gray !important;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+    background-color: #F9FAF8;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .footer {
     padding-top: 35px;
     padding-bottom: 35px;
-    background-color:#1F2937;
+    background-color: #1F2937;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,13 +128,38 @@ button {
 }
 
 .logOut {
-    background-color:cornflowerblue;   
-    color: white;
+    background-color: cornflowerblue;
+}
+
+.profileUpdateForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profileUpdateForm input {
+    width: 480px;
+    padding: 6px;
     font-size: 14px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 4px;
-    border-style: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.profileUpdateForm input:focus {
+    border-color: #3882F6;
+    outline: none;
+}
+
+.profileUpdateForm button {
+    width: 495px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #3882F6;
+    color: white;
+    cursor: pointer;
+}
+
+.profileUpdateForm button:hover {
+    background-color: #3170D5;
 }

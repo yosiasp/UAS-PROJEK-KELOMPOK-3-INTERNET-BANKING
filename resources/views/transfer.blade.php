@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/transfer.css') }}">
-    <title>Transfer Dana</title>
+    <title>Transfer</title>
 </head>
 <body>
     <div class="header">
@@ -12,7 +12,11 @@
         <ul>
             <li><a href="{{ route('home', ['id' => $account->id]) }}">Home</a></li>
             <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
-            <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="logOut">Log Out</button>
+            </form>
         </ul>
     </div>
 
@@ -26,14 +30,22 @@
                         <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
+                
+                <li>
+                    <a href="#" class="menu-item" onclick="toggleSubMenu('transfer')">Transfer Dana</a>
+                    <ul class="sub-menu" id="transfer">
+                        <li><a href="{{ route('accountList', ['id' => $account->id]) }}">Daftar Rekening Tujuan</a></li>     
+                        <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer</a></li>
+                    </ul> 
+                </li>
+
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
                         <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
-                        <li><a href="#">Ubah Alamat Email</a></li>
-                        <li><a href="#">Ubah Nomor Telepon</a></li>
-                        <li><a href="#">Pembaruan Data Diri</a></li>
+                        <li><a href="{{ route('changeEmail', ['id' => $account->id]) }}">Ubah Alamat Email</a></li>
+                        <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
+                        <li><a href="{{ route('updateProfile', ['id' => $account->id]) }}">Pembaruan Data Diri</a></li>
                     </ul>
                 </li>
             </ul>
@@ -46,20 +58,31 @@
             @if (session('status'))
                 <p class="status-message">{{ session('status') }}</p>
             @endif
-            <h2>Transfer Dana</h2>
-            <form class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
-                @csrf
-                <label for="account">No rekening</label>
-                <input type="text" id="account" name="account" required>
+            <h2>Transfer Dana - Transfer</h2>
+            @if($accountList->isEmpty())
+                <h3>Belum Ada Nomor Rekening Tujuan yang Terdaftar</h3>
+                <p>Silakan mendaftarkan nomor rekening tujuan terlebih dahulu.</p>
+                <a href="{{ route('accountList', ['id' => $account->id]) }}">Daftar Nomor Rekening Tujuan Baru</a>
+            @else
+                <form id='transferForm' class = "transferInfo" method="POST" action="{{ route('transfer.store', ['id' => $account->id]) }}">
+                    @csrf
+                    <label for="account">No rekening</label>
+                    <select id="account" name="account" required>
+                        <option value="" disabled selected>- PILIH -</option>
+                        @foreach($accountList as $account)
+                            <option value="{{ $account->accountNumber }}">{{ $account->accountNumber }} {{ $account->fullname }}</option>
+                        @endforeach
+                    </select>
 
-                <label for="amount">Jumlah</label>
-                <input type="number" id="amount" name="amount" required>
+                    <label for="amount">Jumlah</label>
+                    <input type="text" id="amount" name="amount" required>
 
-                <label for="description">Berita</label>
-                <input type="text" id="description" name="description">
+                    <label for="description">Berita</label>
+                    <input type="text" id="description" name="description">
 
-                <input type="submit" value="Transfer">
-            </form>
+                    <input type="submit" value="Transfer">
+                </form>
+            @endif
         </div>
     </div>
 
@@ -76,6 +99,24 @@
                 subMenu.style.display = "block";
             }
         }
+
+        document.getElementById('account').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, ''); // Membuang input yang bukan angka
+            e.target.value = value;
+        });
+
+        document.getElementById('amount').addEventListener('input', function (e) {
+            let value = e.target.value;
+            value = value.replace(/\D/g, ''); // Membuang input yang bukan angka
+            value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Menambahkan titik sebagai separator
+            e.target.value = value;
+        });
+
+        document.getElementById('transferForm').addEventListener('submit', function (e) {
+            let amountInput = document.getElementById('amount');
+            let value = amountInput.value.replace(/\./g, ''); // Membuang titik pemisah sebelum dimasukan ke back-end
+            amountInput.value = value;
+        });
     </script>
 </body>
 </html>

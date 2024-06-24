@@ -11,8 +11,11 @@
         <p class="logo">INTERNET BANKING SEJAHTERA</p>
         <ul>
             <li><a href="{{ route('home', ['id' => $account->id]) }}">Home</a></li>
-            <li><a href="{{ url('/customer-service') }}" target="_blank">Costumer Service</a></li>
-            <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
+            <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="logOut">Log Out</button>
+            </form>
         </ul>
     </div>
 
@@ -26,14 +29,22 @@
                         <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
+
+                <li>
+                    <a href="#" class="menu-item" onclick="toggleSubMenu('transfer')">Transfer Dana</a>
+                    <ul class="sub-menu" id="transfer">
+                        <li><a href="{{ route('accountList', ['id' => $account->id]) }}">Daftar Rekening Tujuan</a></li>     
+                        <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer</a></li>
+                    </ul> 
+                </li>
+                
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
-                    <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
-                        <li><a href="#">Ubah Alamat Email</a></li>
-                        <li><a href="#">Ubah Nomor Telepon</a></li>
-                        <li><a href="#">Pembaruan Data Diri</a></li>
+                        <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
+                        <li><a href="{{ route('changeEmail', ['id' => $account->id]) }}">Ubah Alamat Email</a></li>
+                        <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
+                        <li><a href="{{ route('updateProfile', ['id' => $account->id]) }}">Pembaruan Data Diri</a></li>
                     </ul>
                 </li>
             </ul>
@@ -50,9 +61,9 @@
         <form class='passwordInput' action="{{ route('change-pin', ['id' => $account->id]) }}" method="POST">
             @csrf
             @method('PATCH')
-            <input type="password" name="pinLama" placeholder="Masukkan PIN Lama Anda Saat Ini">
-            <input type="password" name="pinBaru" placeholder="Masukkan PIN Baru (6 Angka)">
-            <input type="password" name="pinBaru_confirmation" placeholder="Konfirmasi Ulang PIN Baru">
+            <input type="password" class='password' name="pinLama" placeholder="Masukkan PIN Lama Anda Saat Ini" pattern="[0-9]{6}" required>
+            <input type="password" class='password' name="pinBaru" placeholder="Masukkan PIN Baru (6 Angka)" pattern="[0-9]{6}" required>
+            <input type="password" class='password' name="pinBaru_confirmation" placeholder="Konfirmasi Ulang PIN Baru" pattern="[0-9]{6}" required>
             <button type="submit">Ganti PIN</button>
         </form>
     </div>
@@ -71,6 +82,13 @@
                 subMenu.style.display = "block";
             }
         }
+
+        document.querySelectorAll('.password').forEach(function(element) {
+            element.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, ''); // Membuang input yang bukan angka
+                e.target.value = value;
+            });
+        });
     </script>
 </body>
 </html>

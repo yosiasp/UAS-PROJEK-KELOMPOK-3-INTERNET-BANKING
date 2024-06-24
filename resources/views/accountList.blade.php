@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/balanceInfo.css') }}">
-    <title>Informasi Saldo</title>
+    <link rel="stylesheet" href="{{ asset('css/accountList.css') }}">
+    <title>Daftar Rekening Tujuan</title>
 </head>
 <body>
     <div class="header">
@@ -29,15 +29,12 @@
                         <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-
-                <li>
-                    <a href="#" class="menu-item" onclick="toggleSubMenu('transfer')">Transfer Dana</a>
+                <a href="#" class="menu-item" onclick="toggleSubMenu('transfer')">Transfer Dana</a>
                     <ul class="sub-menu" id="transfer">
                         <li><a href="{{ route('accountList', ['id' => $account->id]) }}">Daftar Rekening Tujuan</a></li>     
                         <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer</a></li>
-                    </ul> 
-                </li>
-                
+                    </ul>
+                <li>
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
@@ -48,21 +45,23 @@
                     </ul>
                 </li>
             </ul>
-        </div>
+        </div>    
+
         <div class="content">
-            <h2>Informasi Rekening - Informasi Saldo</h2>
-            <div class="table">
-                <div class="column1">
-                    <P class="row1">No Rekening</P>
-                    <p class="row2">{{ $balanceInfo->accountNumber }}</p>
-                </div>
-                <div class="column2">
-                    <P class="row1">Saldo Efektif</P>
-                    <p class="row2">Rp{{ number_format($balanceInfo->balance, 0, ',', '.') }}</p>   
-                </div>
-            </div>
+            @if (session('error'))
+                <p class="error-message">{{ session('error') }}</p>
+            @endif
+            @if (session('status'))
+                <p class="status-message">{{ session('status') }}</p>
+            @endif
+            <h2>Transfer Dana - Daftar Rekening Tujuan</h2>
+            <form class='accountNumberInput' id='account' action="{{ route('account-list', ['id' => $account->id]) }}" method="POST">
+                @csrf
+                <label for="account">No rekening:</label>
+                <input type="text" id="accountNumber" name="accountNumber" required>
+                <button type="submit">Daftarkan</button>
+            </form>
         </div>
-        
     </div>
 
     <div class="footer">
@@ -78,7 +77,11 @@
                 subMenu.style.display = "block";
             }
         }
+
+        document.getElementById('account').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, ''); // Membuang input yang bukan angka
+            e.target.value = value;
+        });
     </script>
 </body>
 </html>
-

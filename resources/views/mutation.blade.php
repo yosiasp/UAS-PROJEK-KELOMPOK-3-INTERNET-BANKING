@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS untuk styling pagination -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/mutation.css') }}">
     <title>Mutasi Rekening</title>
 </head>
@@ -12,7 +14,11 @@
         <ul>
             <li><a href="{{ route('home', ['id' => $account->id]) }}">Home</a></li>
             <li><a href="{{ url('/customer-service') }}" target="_blank">Customer Service</a></li>
-            <li><a class="logOut" href="{{ url('/') }}">[Log Out]</a></li>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="logOut">Log Out</button>
+            </form>
         </ul>
     </div>
 
@@ -26,14 +32,22 @@
                         <li><a href="{{ route('mutation', ['id' => $account->id]) }}">Mutasi Rekening</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer Dana</a></li>
+
+                <li>
+                    <a href="#" class="menu-item" onclick="toggleSubMenu('transfer')">Transfer Dana</a>
+                    <ul class="sub-menu" id="transfer">
+                        <li><a href="{{ route('accountList', ['id' => $account->id]) }}">Daftar Rekening Tujuan</a></li>     
+                        <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer</a></li>
+                    </ul> 
+                </li>
+
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
                         <li><a href="{{ route('changePin', ['id' => $account->id]) }}">Ganti PIN</a></li>
-                        <li><a href="#">Ubah Alamat Email</a></li>
-                        <li><a href="#">Ubah Nomor Telepon</a></li>
-                        <li><a href="#">Pembaruan Data Diri</a></li>
+                        <li><a href="{{ route('changeEmail', ['id' => $account->id]) }}">Ubah Alamat Email</a></li>
+                        <li><a href="{{ route('changePhone', ['id' => $account->id]) }}">Ubah Nomor Telepon</a></li>
+                        <li><a href="{{ route('updateProfile', ['id' => $account->id]) }}">Pembaruan Data Diri</a></li>
                     </ul>
                 </li>
             </ul>
@@ -64,22 +78,25 @@
                     <thead>
                         <tr>
                             <th>Tanggal</th>
-                            <th>Jumlah</th></th>
+                            <th>Mutasi</th></th>
                             <th>Tipe</th>
-                            <th>Deksripsi</th>
+                            <th>Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($personalMutations as $mutation)
                         <tr>
                             <td>{{ $mutation->date }}</td>
-                            <td>Rp{{ $mutation->amount }}</td>
+                            <td>Rp{{number_format($mutation->amount , 0, ',', '.') }}</td>
                             <td>{{ $mutation->type }}</td>
                             <td>{{ $mutation->news }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <div class="pagination-links">
+                    {{ $personalMutations->appends(request()->input())->links() }}  
+                </div>
             @endif
         </div>
     </div>

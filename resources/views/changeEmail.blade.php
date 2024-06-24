@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/balanceInfo.css') }}">
-    <title>Informasi Saldo</title>
+    <link rel="stylesheet" href="{{ asset('css/changeEmail.css') }}">
+    <title>Ubah Alamat Email</title>
 </head>
 <body>
     <div class="header">
@@ -37,7 +37,7 @@
                         <li><a href="{{ route('transfer', ['id' => $account->id]) }}">Transfer</a></li>
                     </ul> 
                 </li>
-                
+
                 <li>
                     <a href="#" class="menu-item" onclick="toggleSubMenu('administration')">Administrasi</a>
                     <ul class="sub-menu" id="administration">
@@ -48,21 +48,24 @@
                     </ul>
                 </li>
             </ul>
-        </div>
+        </div>    
+
         <div class="content">
-            <h2>Informasi Rekening - Informasi Saldo</h2>
-            <div class="table">
-                <div class="column1">
-                    <P class="row1">No Rekening</P>
-                    <p class="row2">{{ $balanceInfo->accountNumber }}</p>
-                </div>
-                <div class="column2">
-                    <P class="row1">Saldo Efektif</P>
-                    <p class="row2">Rp{{ number_format($balanceInfo->balance, 0, ',', '.') }}</p>   
-                </div>
-            </div>
+            @if (session('error'))
+                <p class="error-message">{{ session('error') }}</p>
+            @endif
+            @if (session('success'))
+                <p class="success-message">{{ session('success') }}</p>
+            @endif
+            <h2>Administrasi - Ubah Alamat Email</h2>
+            <form class='passwordInput' action="{{ route('change-email', ['id' => $account->id]) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <input type="email" name="emailLama" placeholder="Masukkan Alamat Email Lama Anda Saat Ini" required>
+                <input type="email" name="emailBaru" placeholder="Masukkan Alamat Email Baru" required>
+                <button type="submit">Ubah Alamat Email</button>
+            </form>
         </div>
-        
     </div>
 
     <div class="footer">
@@ -81,4 +84,3 @@
     </script>
 </body>
 </html>
-

@@ -64,8 +64,19 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.content h1 {
-    font-size: 32px;
+.error-message {
+    color: #ff0000 !important; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+    border: 1px solid #ff0000; 
+    background-color: #ffe6e6; 
+    padding: 10px; 
+    border-radius: 5px; 
+    text-align: center; 
+}
+
+.content h2 {
+    font-size: 26px;
     font-weight: bold;
     color: #1F2937;
     text-align: center;

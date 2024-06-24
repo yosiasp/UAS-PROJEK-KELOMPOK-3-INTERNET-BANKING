@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
-use Carbon\Carbon;
+use App\Models\LoginHistory;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -14,10 +15,20 @@ class HomeController extends Controller
         if (!$account) {
             abort(404);
         }
+        $username = $account->username;
 
-        $currentDate = Carbon::now()->locale('id')->isoFormat('DD/MM/YYYY');
-        $currentTime = Carbon::now()->isoFormat('HH:mm:ss');
+        $mostRecentLogin = LoginHistory::where('username', $username)
+        ->orderBy('datetime', 'desc')
+        ->skip(1)  
+        ->take(1)  
+        ->first();
 
-        return view('home', compact('account', 'currentDate', 'currentTime'));
+        // Membuat format tanggal dan waktu
+        if ($mostRecentLogin) {
+        $mostRecentLogin->formatted_datetime = Carbon::parse($mostRecentLogin->datetime)
+            ->format('DD/MM/YYYY HH:mm:ss');
+        }
+
+        return view('home', compact('account', 'mostRecentLogin'));
     }
 }

@@ -132,6 +132,12 @@
   gap: 10px;
 }
 
+.transferInfo select {
+  width: 494px;
+  height: 30px;
+  padding: 3px 6px;
+}
+
 .transferInfo input {
   width: 480px;
   padding: 6px;
@@ -146,5 +152,13 @@
 }
 
 .logOut {
-  background-color:cornflowerblue
+  background-color:cornflowerblue;   
+  color: white;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 4px;
+  border-style: none;
 }
