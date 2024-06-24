@@ -26,7 +26,7 @@
                 <div class="texts">
                     <h1>Internet Banking</h1>
                     <h3>Dengan Internet Banking Bank Sejahtera, Anda dapat berinteraksi dengan Bank Sejahtera selama 24 jam sehari, 7 hari seminggu, 365 hari setahun, di manapun Anda berada. 
-                    Disertai dengan tingkat keamanan yang tinggi dengan menggunakan teknologi kriptografi SSL yang akan mengacak dan menyandikan data transaksi, serta interface mudah dimengerti dan digunakan.
+                    Disertai dengan tingkat keamanan yang tinggi dengan menggunakan teknologi kriptografi SSL yang akan mengacak dan menyandikan data transaksi, serta dilengkapi interface yang mudah untuk dimengerti dan digunakan.
                     </h3>
                 </div>
                 
