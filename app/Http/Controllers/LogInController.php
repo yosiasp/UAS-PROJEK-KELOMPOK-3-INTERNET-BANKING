@@ -55,7 +55,7 @@ class LogInController extends Controller
 
                 // Login gagal, kembali ke main dengan error message
                 if($currentAttempts == 3){
-                    return redirect()->route('login')->with('error', 'Akun anda telah terblokir, silahkan hubungi costumer service');
+                    return redirect()->route('login')->with('error', 'Akun anda telah terblokir, silahkan hubungi customer service');
                 } else {
                     $attemptsLeft = 3 - $currentAttempts;
                     return redirect()->route('login')->with('error', 'PIN anda salah, anda dapat mengulangi sebanyak '. $attemptsLeft . ' kali lagi.');
