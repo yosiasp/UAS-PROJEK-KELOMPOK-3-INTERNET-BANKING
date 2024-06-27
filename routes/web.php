@@ -32,6 +32,7 @@ Route::get('/create-account', [CreateAccountController::class, 'index'])->name('
 Route::post('/create-account', [CreateAccountController::class, 'store'])->name('accounts.store');
 Route::get('/check-username', [CreateAccountController::class, 'checkUsername'])->name('check-username');
 
+// mengelompokkan route yang hanya bisa dikunjungi bila sudah terautentikasi
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/{id}/home', [HomeController::class, 'index'])->name('home');
 
