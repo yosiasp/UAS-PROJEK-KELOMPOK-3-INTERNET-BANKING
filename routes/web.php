@@ -57,6 +57,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/{id}/accountList', [AccountListController::class, 'index'])->name('accountList');
     Route::post('/{id}/accountList', [AccountListController::class, 'storeAccount'])->name('account-list');
 
+    Route::delete('/logout', LogOutController::class)->name('logout');
 });
-
-Route::delete('/logout', LogOutController::class)->name('logout');
