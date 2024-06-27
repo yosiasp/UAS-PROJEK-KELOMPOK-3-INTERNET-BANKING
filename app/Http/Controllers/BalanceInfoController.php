@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\Balance;
-use Illuminate\Http\Request;
 
 class BalanceInfoController extends Controller
 {
+    // menampilkan tampilan dari informasi saldo sesuai id
     public function index($id) 
     {
         $account = Account::find($id);

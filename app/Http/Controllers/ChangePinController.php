@@ -12,12 +12,13 @@ use App\Models\Account;
 
 class ChangePinController extends Controller
 {
+    // menampilkan halaman untuk mengubah pin
     public function index($id)
     {
         $account = Account::find($id);
         return view("changePin", compact('account'));
     }
-
+    // menyimpan data yang sudah diisi dengan mengganti data yang lama dengan data yang baru
     public function updatePin(Request $request, $id)
     {
         // Validasi 

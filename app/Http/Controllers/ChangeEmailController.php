@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ChangeEmailController extends Controller
 {
+    // menampilkan tampilan dari halaman untuk mengubah alamat email
     public function index($id)
     {
         $account = Account::find($id);

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class TransferController extends Controller
 {
+    // menampilkan halaman untuk melakukan transfer
     public function index($id) 
     {
         $account = Account::find($id);
@@ -20,7 +21,7 @@ class TransferController extends Controller
         return view("transfer", compact('account', 'accountList'));
     }
 
-
+    // menyimpan hasil transfer ke database saldo dari pengirim dan penerima
     public function store(Request $request, $id)
     {
         $account = Account::find($id);
@@ -49,10 +50,11 @@ class TransferController extends Controller
                 // Fullname dari penerima
                 $receiverName = $receiverAccount->fullname;
 
-                // Update balance
+                // saldo dari pengirim dikurang
                 $balanceInfo->balance -= $amount;
                 $balanceInfo->save();
 
+                // saldo dari penerima ditambah
                 $receiver->balance += $amount;
                 $receiver->save();
 

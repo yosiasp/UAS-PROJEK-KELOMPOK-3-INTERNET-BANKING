@@ -10,6 +10,7 @@ use App\Models\Account;
 
 class ChangePhoneController extends Controller
 {
+    // menampilkan tampilan untuk mengubah nomor telepon
     public function index($id)
     {
         $account = Account::find($id);
@@ -17,6 +18,7 @@ class ChangePhoneController extends Controller
         return view("changePhone", compact('account'));
     }
 
+    // menyimpan data yang sudah diisi dengan mengganti data yang lama dengan data yang baru
     public function updatePhone(Request $request, $id)
     {
         // Validasi 
@@ -53,7 +55,5 @@ class ChangePhoneController extends Controller
                 return redirect()->route('main')->with('error', 'Akun anda telah terblokir, silahkan hubungi customer service');
             }    
         }
-
-
     }
 }

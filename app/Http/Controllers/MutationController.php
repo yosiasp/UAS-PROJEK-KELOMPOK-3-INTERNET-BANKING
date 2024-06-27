@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class MutationController extends Controller
 {
+    // menampilkan halaman untuk melakukan mutasi rekening
     public function index(Request $request, $id) 
     {
         $account = Account::find($id);

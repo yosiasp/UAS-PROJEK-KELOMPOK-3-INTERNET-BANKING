@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\LoginHistory;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class HomeController extends Controller
 {
+    // menampilkan tampilan dari home sesuai id
     public function index($id) 
     {
         $account = Account::find($id);

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class AccountListController extends Controller
 {
+    // menampilkan tampilan berupa list dari akun yang sudah terdaftar 
     public function index($id) 
     {
         $account = Account::find($id);
@@ -16,6 +17,7 @@ class AccountListController extends Controller
         return view("accountList", compact('account'));
     }
 
+    // menyimpan data ke dalam database sesuai validasi yang diberikan
     public function storeAccount(Request $request, $id)
     {
         $balanceInfo = Balance::where('accountNumber', $request->accountNumber)->first();

@@ -12,11 +12,13 @@ use Carbon\Carbon;
 
 class LogInController extends Controller
 {
+    // menampilkan tampilan untuk login
     public function index()
     {
         return view('login');
     }
 
+    // menyimpan data untuk login sesuai validasi ke dalam database
     public function login_proses(Request $request)
     {
         $username = $request->input('username');
@@ -27,6 +29,7 @@ class LogInController extends Controller
         if ($account) {
             $failedAttempts = FailedAttempts::where('username', $username)->first();
 
+            // bila salah memasukkan pin sebanyak 3 kali, akun akan terblokir
             if ($failedAttempts->attempts == 3) {
                 return redirect()->route('login')->with('error', 'Akun anda telah terblokir, silahkan hubungi customer service');
             }

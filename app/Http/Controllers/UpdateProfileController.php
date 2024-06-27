@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UpdateProfileController extends Controller
 {
+    // menampilkan halaman untuk memperbarui data diri
     public function index($id)
     {
         $account = Account::find($id);
@@ -14,6 +15,7 @@ class UpdateProfileController extends Controller
         return view("updateProfile",  compact('account'));
     }
 
+    // menyimpan data baru dan menghapus data yang lama
     public function updateProfile(Request $request, $id)
     {
         // Validasi 
@@ -32,31 +34,38 @@ class UpdateProfileController extends Controller
 
             $changes = 0;
 
+            // bila data yang diisi berbeda dengan yang ada di database, data diperbarui
             if($account->fullname != $request->fullname){
                 $account->fullname = $request->fullname;
                 $changes++;
             }
             
+
+            // bila data yang diisi berbeda dengan yang ada di database, data diperbarui
             if($account->dob != $request->dob){
                 $account->dob = $request->dob;
                 $changes++;
             }
 
+            // bila data yang diisi berbeda dengan yang ada di database, data diperbarui
             if($account->fullname != $request->fullname){
                 $account->fullname = $request->fullname;
                 $changes++;
             }
-            
+
+            // bila data yang diisi berbeda dengan yang ada di database, data diperbarui
             if($account->gender != $request->gender){
                 $account->gender = $request->gender;
                 $changes++;
             }
 
+            // bila data yang diisi berbeda dengan yang ada di database, data diperbarui
             if($account->address != $request->address){
                 $account->address = $request->address;
                 $changes++;
             }
 
+            // bila data yang diisi berbeda dengan yang ada di database, data diperbarui
             if($account->address != $request->address){
                 $account->address = $request->address;
                 $changes++;
@@ -64,6 +73,7 @@ class UpdateProfileController extends Controller
                  
             $account->save();
             
+            // bila tidak ada perubahan yang dilakukan
             if($changes == 0){
                 return redirect()->route('updateProfile', ['id' => $id])->with('status', 'Tidak ada perubahan pada data diri');
             } else {

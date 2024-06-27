@@ -11,11 +11,13 @@ use Illuminate\Support\Facades\Validator;
 
 class CreateAccountController extends Controller
 {
+    // menampilkan tampilan dari halaman register
     public function index()
     {
         return view('createAccount');
     }
     
+    // membandingkan username dengan username yang ada di database
     public function checkUsername(Request $request)
     {
         $username = $request->query('username');
@@ -24,6 +26,7 @@ class CreateAccountController extends Controller
         return response()->json(['available' => !$exists]);
     }
 
+    // menyimpan data ke dalam database sesuai validasi yang diberikan
     public function store(Request $request)
     {
         // Validasi 
@@ -62,6 +65,7 @@ class CreateAccountController extends Controller
             $balances->balance = 0;
             $balances->save();
 
+            // menghitung jumlah kesalahan dalam memasukkan pin ketika username sudah sesuai
             $failedAttempts = new FailedAttempts;
             $failedAttempts->username = $request->username;
             $failedAttempts->attempts = 0;
