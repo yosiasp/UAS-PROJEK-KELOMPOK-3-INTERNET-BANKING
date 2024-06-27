@@ -30,33 +30,45 @@ class UpdateProfileController extends Controller
         } else {
             $account = Account::find($id);
 
+            $changes = 0;
+
             if($account->fullname != $request->fullname){
                 $account->fullname = $request->fullname;
+                $changes++;
             }
             
             if($account->dob != $request->dob){
                 $account->dob = $request->dob;
+                $changes++;
             }
 
             if($account->fullname != $request->fullname){
                 $account->fullname = $request->fullname;
+                $changes++;
             }
             
             if($account->gender != $request->gender){
                 $account->gender = $request->gender;
+                $changes++;
             }
 
             if($account->address != $request->address){
                 $account->address = $request->address;
+                $changes++;
             }
 
             if($account->address != $request->address){
                 $account->address = $request->address;
+                $changes++;
             }
                  
             $account->save();
             
-            return redirect()->route('updateProfile', ['id' => $id])->with('status', 'Pembaruan data diri berhasil');
+            if($changes == 0){
+                return redirect()->route('updateProfile', ['id' => $id])->with('status', 'Tidak ada perubahan pada data diri');
+            } else {
+                return redirect()->route('updateProfile', ['id' => $id])->with('status', 'Pembaruan data diri berhasil');
+            }
         }
 
     }
