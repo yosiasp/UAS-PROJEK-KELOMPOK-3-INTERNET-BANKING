@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\FailedAttempts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class ChangeEmailController extends Controller
 {
@@ -33,7 +35,20 @@ class ChangeEmailController extends Controller
                 $account->save();
                 return redirect()->back()->with('success', 'Email berhasil diubah');
             } else{
-                return redirect()->back()->with('error', 'Email lama tidak sesuai');
+                $username = $account->username;
+                // return redirect()->back()->with('error', 'Email lama tidak sesuai');
+                $failedAttempts = FailedAttempts::where('username', $username)->first();
+
+                // Memblokir akun
+                $failedAttempts->attempts = 3;
+                $failedAttempts->save();
+
+                // Mencabut autentikasi
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+        
+                return redirect()->route('main')->with('error', 'Akun anda telah terblokir, silahkan hubungi customer service');
             }
         }   
     }
