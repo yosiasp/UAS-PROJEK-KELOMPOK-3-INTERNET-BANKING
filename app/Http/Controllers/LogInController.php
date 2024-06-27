@@ -6,8 +6,8 @@ use App\Models\Account;
 use App\Models\LoginHistory;
 use App\Models\FailedAttempts;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class LogInController extends Controller
@@ -20,17 +20,17 @@ class LogInController extends Controller
     public function login_proses(Request $request)
     {
         $username = $request->input('username');
-        $pin = $request->input('pin');
+        $pin = $request->input('pin');  
 
         $account = Account::where('username', $username)->first();
 
-        if($account){
+        if ($account) {
             $failedAttempts = FailedAttempts::where('username', $username)->first();
 
-            if($failedAttempts->attempts == 3){
-                return redirect()->route('login')->with('error', 'Akun anda telah terblokir, silahkan hubungi costumer service');
+            if ($failedAttempts->attempts == 3) {
+                return redirect()->route('login')->with('error', 'Akun anda telah terblokir, silahkan hubungi customer service');
             }
-    
+
             if (Hash::check($pin, $account->pin)) {
                 // Login sukses
                 $request->session()->regenerate();
@@ -44,21 +44,24 @@ class LogInController extends Controller
                 $newLoginHistory->username = $username;
                 $newLoginHistory->datetime = Carbon::now()->setTimezone('Asia/Jakarta');
                 $newLoginHistory->save();
-        
-                return redirect()->intended(route('home', ['id' => $account->id], absolute: true));
-                
+
+                // Memberikan autentikasi untuk login masuk
+                Auth::login($account);
+
+                // Redirect ke home setelah login
+                return redirect()->intended(route('home', ['id' => $account->id]));
             } else {
                 // Menambah failed attempts
                 $failedAttempts->attempts++;
                 $currentAttempts = $failedAttempts->attempts;
                 $failedAttempts->save();
 
-                // Login gagal, kembali ke main dengan error message
-                if($currentAttempts == 3){
+                // Login gagal, kembali ke login dengan pesan error
+                if ($currentAttempts == 3) {
                     return redirect()->route('login')->with('error', 'Akun anda telah terblokir, silahkan hubungi customer service');
                 } else {
                     $attemptsLeft = 3 - $currentAttempts;
-                    return redirect()->route('login')->with('error', 'PIN anda salah, anda dapat mengulangi sebanyak '. $attemptsLeft . ' kali lagi.');
+                    return redirect()->route('login')->with('error', 'PIN anda salah, anda dapat mengulangi sebanyak ' . $attemptsLeft . ' kali lagi.');
                 }
             }
         } else {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Models\FailedAttempts;
 use App\Models\Account;
 
 class ChangePhoneController extends Controller
@@ -35,7 +37,20 @@ class ChangePhoneController extends Controller
 
                 return redirect()->back()->with('success', 'Nomor telepon berhasil diubah');
             } else {
-                return redirect()->back()->with('error', 'Nomor telepon lama tidak sesuai');
+                $username = $account->username;
+                // return redirect()->back()->with('error', 'Nomor telepon lama tidak sesuai');
+                $failedAttempts = FailedAttempts::where('username', $username)->first();
+
+                // Memblokir akun
+                $failedAttempts->attempts = 3;
+                $failedAttempts->save();
+
+                // Mencabut autentikasi
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+        
+                return redirect()->route('main')->with('error', 'Akun anda telah terblokir, silahkan hubungi customer service');
             }    
         }
 
